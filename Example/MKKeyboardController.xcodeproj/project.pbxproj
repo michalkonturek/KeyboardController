@@ -19,6 +19,7 @@
 		9012AC711881BD8E00B29D51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9012AC591881BD8E00B29D51 /* UIKit.framework */; };
 		9012AC791881BD8E00B29D51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9012AC771881BD8E00B29D51 /* InfoPlist.strings */; };
 		9012AC7B1881BD8E00B29D51 /* MKKeyboardControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9012AC7A1881BD8E00B29D51 /* MKKeyboardControllerTests.m */; };
+		9012AC8C1881BF1100B29D51 /* MKKeyboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9012AC8B1881BF1100B29D51 /* MKKeyboardController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		9012AC761881BD8E00B29D51 /* MKKeyboardControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MKKeyboardControllerTests-Info.plist"; sourceTree = "<group>"; };
 		9012AC781881BD8E00B29D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9012AC7A1881BD8E00B29D51 /* MKKeyboardControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKKeyboardControllerTests.m; sourceTree = "<group>"; };
+		9012AC8A1881BF1100B29D51 /* MKKeyboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKeyboardController.h; sourceTree = "<group>"; };
+		9012AC8B1881BF1100B29D51 /* MKKeyboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeyboardController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,7 @@
 		9012AC5B1881BD8E00B29D51 /* MKKeyboardController */ = {
 			isa = PBXGroup;
 			children = (
+				9012AC871881BEFA00B29D51 /* Source */,
 				9012AC641881BD8E00B29D51 /* AppDelegate.h */,
 				9012AC651881BD8E00B29D51 /* AppDelegate.m */,
 				9012AC671881BD8E00B29D51 /* Images.xcassets */,
@@ -142,6 +146,16 @@
 				9012AC771881BD8E00B29D51 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9012AC871881BEFA00B29D51 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				9012AC8A1881BF1100B29D51 /* MKKeyboardController.h */,
+				9012AC8B1881BF1100B29D51 /* MKKeyboardController.m */,
+			);
+			name = Source;
+			path = ../../Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +255,7 @@
 			files = (
 				9012AC661881BD8E00B29D51 /* AppDelegate.m in Sources */,
 				9012AC621881BD8E00B29D51 /* main.m in Sources */,
+				9012AC8C1881BF1100B29D51 /* MKKeyboardController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
