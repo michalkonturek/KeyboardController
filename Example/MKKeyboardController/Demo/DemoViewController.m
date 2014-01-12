@@ -10,7 +10,7 @@
 
 @interface DemoViewController ()
 
-@property (nonatomic, strong) MKKeyboardController *keyboardController;
+@property (nonatomic, strong) KeyboardController *keyboardController;
 
 @end
 
@@ -24,7 +24,7 @@
 
 - (void)_setupTextFields {
     id textFields = @[_textField1, _textField2, _textField3, _textField4, _textField5];
-    self.keyboardController = [MKKeyboardController controllerWithTextFields:textFields];
+    self.keyboardController = [KeyboardController controllerWithTextFields:textFields];
     self.keyboardController.delegate = self;
     self.keyboardController.textFieldDelegate = self;
 }
@@ -54,19 +54,19 @@
 
 #pragma mark - KeyboardControllerDelegate Methods
 
-- (void)controllerDidHideKeyboard:(MKKeyboardController *)controller {
+- (void)controllerDidHideKeyboard:(KeyboardController *)controller {
     
 }
 
-- (void)controllerDidShowKeyboard:(MKKeyboardController *)controller {
+- (void)controllerDidShowKeyboard:(KeyboardController *)controller {
     
 }
 
-- (void)controllerWillHideKeyboard:(MKKeyboardController *)controller {
+- (void)controllerWillHideKeyboard:(KeyboardController *)controller {
     [self _moveViewByY:[self keyboardShiftValue]];
 }
 
-- (void)controllerWillShowKeyboard:(MKKeyboardController *)controller {
+- (void)controllerWillShowKeyboard:(KeyboardController *)controller {
     [self _moveViewByY:-[self keyboardShiftValue]];
 }
 

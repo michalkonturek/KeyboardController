@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MKKeyboardController.h"
+#import "KeyboardController.h"
 
 @interface DemoViewController : UIViewController<
-MKKeyboardControllerDelegate,
+KeyboardControllerDelegate,
 UITextFieldDelegate
 >
 

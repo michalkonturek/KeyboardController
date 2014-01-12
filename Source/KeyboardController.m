@@ -1,14 +1,14 @@
 //
-//  MKKeyboardController.m
-//  MKKeyboardController
+//  KeyboardController.m
+//  KeyboardController
 //
 //  Created by Michal Konturek on 11/01/2014.
 //  Copyright (c) 2014 Michal Konturek. All rights reserved.
 //
 
-#import "MKKeyboardController.h"
+#import "KeyboardController.h"
 
-@implementation MKKeyboardController
+@implementation KeyboardController
 
 + (id)controllerWithTextField:(UITextField *)textField {
     return [[self alloc] initWithTextFields:@[textField]];
@@ -60,25 +60,25 @@
 
 - (void)_onKeyboardDidHide {
     if (!self.delegate) return;
-    if (![self.delegate conformsToProtocol:@protocol(MKKeyboardControllerDelegate)]) return;
+    if (![self.delegate conformsToProtocol:@protocol(KeyboardControllerDelegate)]) return;
     [self.delegate controllerDidHideKeyboard:self];
 }
 
 - (void)_onKeyboardDidShow {
     if (!self.delegate) return;
-    if (![self.delegate conformsToProtocol:@protocol(MKKeyboardControllerDelegate)]) return;
+    if (![self.delegate conformsToProtocol:@protocol(KeyboardControllerDelegate)]) return;
     [self.delegate controllerDidShowKeyboard:self];
 }
 
 - (void)_onKeyboardWillHide {
     if (!self.delegate) return;
-    if (![self.delegate conformsToProtocol:@protocol(MKKeyboardControllerDelegate)]) return;
+    if (![self.delegate conformsToProtocol:@protocol(KeyboardControllerDelegate)]) return;
     [self.delegate controllerWillHideKeyboard:self];
 }
 
 - (void)_onKeyboardWillShow {
     if (!self.delegate) return;
-    if (![self.delegate conformsToProtocol:@protocol(MKKeyboardControllerDelegate)]) return;
+    if (![self.delegate conformsToProtocol:@protocol(KeyboardControllerDelegate)]) return;
     [self.delegate controllerWillShowKeyboard:self];
 }
 

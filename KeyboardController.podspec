@@ -1,9 +1,9 @@
 
 Pod::Spec.new do |s|
-  s.name         = "MKKeyboardController"
+  s.name         = "KeyboardController"
   s.version      = "1.0.0"
   s.summary      = ""
-  s.homepage     = "https://github.com/michalkonturek/MKKeyboardController"
+  s.homepage     = "https://github.com/michalkonturek/KeyboardController"
   s.license      = 'MIT'
 
   s.author       = { 
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
 
   s.source       = { 
-    :git => "https://github.com/michalkonturek/MKKeyboardController.git", 
+    :git => "https://github.com/michalkonturek/KeyboardController.git", 
     :tag => "1.0.0" 
   }
 
