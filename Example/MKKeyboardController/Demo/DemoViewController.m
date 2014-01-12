@@ -43,7 +43,6 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.textField4) [self _moveViewByY:-50];
     if (textField == self.textField5) [self _moveViewByY:-200];
-    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {

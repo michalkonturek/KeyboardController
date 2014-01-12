@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
   s.name         = "KeyboardController"
   s.version      = "1.0.0"
-  s.summary      = ""
+  s.summary      = "Simplifies iOS keyboard handling."
   s.homepage     = "https://github.com/michalkonturek/KeyboardController"
   s.license      = 'MIT'
 
