@@ -19,7 +19,9 @@
 		9012AC711881BD8E00B29D51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9012AC591881BD8E00B29D51 /* UIKit.framework */; };
 		9012AC791881BD8E00B29D51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9012AC771881BD8E00B29D51 /* InfoPlist.strings */; };
 		9012AC7B1881BD8E00B29D51 /* MKKeyboardControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9012AC7A1881BD8E00B29D51 /* MKKeyboardControllerTests.m */; };
-		9012AC8C1881BF1100B29D51 /* MKKeyboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9012AC8B1881BF1100B29D51 /* MKKeyboardController.m */; };
+		9012AC8C1881BF1100B29D51 /* KeyboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9012AC8B1881BF1100B29D51 /* KeyboardController.m */; };
+		905BCC811882179300FA5461 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 905BCC7F1882179300FA5461 /* DemoViewController.m */; };
+		905BCC821882179300FA5461 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 905BCC801882179300FA5461 /* DemoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +51,11 @@
 		9012AC761881BD8E00B29D51 /* MKKeyboardControllerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MKKeyboardControllerTests-Info.plist"; sourceTree = "<group>"; };
 		9012AC781881BD8E00B29D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9012AC7A1881BD8E00B29D51 /* MKKeyboardControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKKeyboardControllerTests.m; sourceTree = "<group>"; };
-		9012AC8A1881BF1100B29D51 /* MKKeyboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKKeyboardController.h; sourceTree = "<group>"; };
-		9012AC8B1881BF1100B29D51 /* MKKeyboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKKeyboardController.m; sourceTree = "<group>"; };
+		9012AC8A1881BF1100B29D51 /* KeyboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardController.h; sourceTree = "<group>"; };
+		9012AC8B1881BF1100B29D51 /* KeyboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardController.m; sourceTree = "<group>"; };
+		905BCC7E1882179300FA5461 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		905BCC7F1882179300FA5461 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		905BCC801882179300FA5461 /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +115,7 @@
 		9012AC5B1881BD8E00B29D51 /* MKKeyboardController */ = {
 			isa = PBXGroup;
 			children = (
+				905BCC7D1882177A00FA5461 /* Demo */,
 				9012AC871881BEFA00B29D51 /* Source */,
 				9012AC641881BD8E00B29D51 /* AppDelegate.h */,
 				9012AC651881BD8E00B29D51 /* AppDelegate.m */,
@@ -151,11 +157,21 @@
 		9012AC871881BEFA00B29D51 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				9012AC8A1881BF1100B29D51 /* MKKeyboardController.h */,
-				9012AC8B1881BF1100B29D51 /* MKKeyboardController.m */,
+				9012AC8A1881BF1100B29D51 /* KeyboardController.h */,
+				9012AC8B1881BF1100B29D51 /* KeyboardController.m */,
 			);
 			name = Source;
 			path = ../../Source;
+			sourceTree = "<group>";
+		};
+		905BCC7D1882177A00FA5461 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				905BCC7E1882179300FA5461 /* DemoViewController.h */,
+				905BCC7F1882179300FA5461 /* DemoViewController.m */,
+				905BCC801882179300FA5461 /* DemoViewController.xib */,
+			);
+			path = Demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9012AC601881BD8E00B29D51 /* InfoPlist.strings in Resources */,
+				905BCC821882179300FA5461 /* DemoViewController.xib in Resources */,
 				9012AC681881BD8E00B29D51 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,7 +272,8 @@
 			files = (
 				9012AC661881BD8E00B29D51 /* AppDelegate.m in Sources */,
 				9012AC621881BD8E00B29D51 /* main.m in Sources */,
-				9012AC8C1881BF1100B29D51 /* MKKeyboardController.m in Sources */,
+				9012AC8C1881BF1100B29D51 /* KeyboardController.m in Sources */,
+				905BCC811882179300FA5461 /* DemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
