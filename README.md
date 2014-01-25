@@ -4,21 +4,8 @@
 [![Build Platform](https://cocoapod-badges.herokuapp.com/p/KeyboardController/badge.png)](https://github.com/michalkonturek/KeyboardController)
 [![Build Version](https://cocoapod-badges.herokuapp.com/v/KeyboardController/badge.png)](https://github.com/michalkonturek/KeyboardController)
 
-
-## Intro
-
 Simplifies iOS keyboard handling.
 
-<!--
-```
-- (void)setupKeyboardController {
-    id textFields = @[_textField1, _textField2, _textField3, _textField4, _textField5];
-    self.keyboardController = [KeyboardController controllerWithTextFields:textFields];
-    self.keyboardController.delegate = self;
-    self.keyboardController.textFieldDelegate = self;
-}
-```
--->
 
 ## License
 
@@ -26,6 +13,72 @@ Source code of this project is available under the standard MIT license. Please 
 
 [PODS]:http://cocoapods.org/
 [LICENSE]:https://github.com/michalkonturek/KeyboardController/blob/master/LICENSE
+
+
+## Usage
+
+To use `KeyboardController`, simply initialize it with an array of `UITextField` objects.
+
+```
+id textFields = @[_textField1, _textField2, 
+				_textField3, _textField4, _textField5];
+self.keyboardController = [KeyboardController controllerWithTextFields:textFields];
+```
+
+Out of the box, `KeyboardController`, depending on a `returnKeyType` property of an `UITextField` instance, will:
+
+* `UIReturnKeyNext` - move to next textField
+* `UIReturnKeyDone` - close keyboard
+
+
+You can also interact with `KeyboardController` directly via the following methods:
+
+```
+- (void)moveToNextTextField;
+- (void)moveToPreviousTextField;
+- (void)closeKeyboard;
+```
+
+
+### KeyboardControllerDelegate 
+
+You could also take advantage of delegation methods:
+
+```
+- (void)controllerDidHideKeyboard:(KeyboardController *)controller;
+- (void)controllerDidShowKeyboard:(KeyboardController *)controller;
+- (void)controllerWillHideKeyboard:(KeyboardController *)controller;
+- (void)controllerWillShowKeyboard:(KeyboardController *)controller;
+```
+
+by setting a `delegate` property of a `KeyboardController`:
+
+```
+self.keyboardController.delegate = self;
+```
+
+
+### UITextFieldDelegate 
+
+There is also an option of setting a `textFieldDelegate` property of all textFields that are under control of `KeyboardController`:
+
+```
+self.keyboardController.textFieldDelegate = self;
+```
+
+This could be particulary useful if you would like to add individual behaviour to `UITextFields` objects.
+
+```
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField == self.textField4) [self _moveViewByY:-50];
+    if (textField == self.textField5) [self _moveViewByY:-200];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.textField4) [self _moveViewByY:50];
+    if (textField == self.textField5) [self _moveViewByY:200];
+}
+```
 
 - - - 
 
