@@ -55,6 +55,44 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)moveToPreviousTextField {
+    for (int i = 0; i < [self.textFields count]; i++) {
+        if ([[self.textFields objectAtIndex:i] isEditing] && i != 0) {
+            [[self.textFields objectAtIndex:i - 1] becomeFirstResponder];
+            break;
+        }
+    }
+}
+
+- (void)moveToNextTextField {
+    for (int i = 0; i < [self.textFields count]; i++) {
+        if ([[self.textFields objectAtIndex:i] isEditing] && i != [self.textFields count] - 1) {
+            [[self.textFields objectAtIndex:i + 1] becomeFirstResponder];
+            break;
+        }
+    }
+}
+
+- (void)closeKeyboard {
+    for (UITextField *textField in self.textFields) {
+        if ([textField isEditing]) {
+            [textField resignFirstResponder];
+            break;
+        }
+    }
+}
+
+- (NSInteger)indexForTextField:(UITextField *)textField {
+    NSInteger index = 0;
+    
+    for (UITextField *t in self.textFields) {
+        if (textField == t) break;
+        index++;
+    }
+    
+    return index;
+}
+
 
 #pragma mark - Notification Handlers
 
@@ -101,47 +139,6 @@
     if (textField.returnKeyType == UIReturnKeyNext) [self moveToNextTextField];
     if (textField.returnKeyType == UIReturnKeyDone) [self closeKeyboard];
     return (textField.returnKeyType == UIReturnKeyDone);
-}
-
-
-#pragma mark - Functionality Methods
-
-- (void)moveToPreviousTextField {
-    for (int i = 0; i < [self.textFields count]; i++) {
-        if ([[self.textFields objectAtIndex:i] isEditing] && i != 0) {
-            [[self.textFields objectAtIndex:i - 1] becomeFirstResponder];
-            break;
-        }
-    }
-}
-
-- (void)moveToNextTextField {
-    for (int i = 0; i < [self.textFields count]; i++) {
-        if ([[self.textFields objectAtIndex:i] isEditing] && i != [self.textFields count] - 1) {
-            [[self.textFields objectAtIndex:i + 1] becomeFirstResponder];
-            break;
-        }
-    }
-}
-
-- (void)closeKeyboard {
-    for (UITextField *textField in self.textFields) {
-        if ([textField isEditing]) {
-            [textField resignFirstResponder];
-            break;
-        }
-    }
-}
-
-- (NSInteger)indexForTextField:(UITextField *)textField {
-    NSInteger index = 0;
-    
-    for (UITextField *t in self.textFields) {
-        if (textField == t) break;
-        index++;
-    }
-    
-    return index;
 }
 
 @end
