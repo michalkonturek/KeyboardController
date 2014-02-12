@@ -31,6 +31,7 @@
 
 @protocol KeyboardControllerDelegate <NSObject>
 
+@optional
 - (void)controllerDidHideKeyboard:(KeyboardController *)controller;
 - (void)controllerDidShowKeyboard:(KeyboardController *)controller;
 - (void)controllerWillHideKeyboard:(KeyboardController *)controller;
