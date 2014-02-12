@@ -12,8 +12,8 @@
 
 @interface KeyboardController : NSObject<UITextFieldDelegate>
 
-+ (id)controllerWithTextField:(UITextField *)textField;
-+ (id)controllerWithTextFields:(NSArray *)textFields;
++ (instancetype)controllerWithTextField:(UITextField *)textField;
++ (instancetype)controllerWithTextFields:(NSArray *)textFields;
 
 @property (nonatomic, assign) id<KeyboardControllerDelegate> delegate;
 @property (nonatomic, assign) id<UITextFieldDelegate> textFieldDelegate;

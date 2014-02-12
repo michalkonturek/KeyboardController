@@ -10,11 +10,11 @@
 
 @implementation KeyboardController
 
-+ (id)controllerWithTextField:(UITextField *)textField {
++ (instancetype)controllerWithTextField:(UITextField *)textField {
     return [[self alloc] initWithTextFields:@[textField]];
 }
 
-+ (id)controllerWithTextFields:(NSArray *)textFields {
++ (instancetype)controllerWithTextFields:(NSArray *)textFields {
     return [[self alloc] initWithTextFields:textFields];
 }
 
