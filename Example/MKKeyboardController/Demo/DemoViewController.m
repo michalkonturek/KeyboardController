@@ -24,7 +24,7 @@
 
 - (void)_setupTextFields {
     id textFields = @[_textField1, _textField2, _textField3, _textField4, _textField5];
-    self.keyboardController = [KeyboardController controllerWithTextFields:textFields];
+    self.keyboardController = [KeyboardController controllerWithFields:textFields];
     self.keyboardController.delegate = self;
     self.keyboardController.textFieldDelegate = self;
 }

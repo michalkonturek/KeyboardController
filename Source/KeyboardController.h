@@ -12,20 +12,20 @@
 
 @interface KeyboardController : NSObject<UITextFieldDelegate>
 
-+ (instancetype)controllerWithTextField:(UITextField *)textField;
-+ (instancetype)controllerWithTextFields:(NSArray *)textFields;
++ (instancetype)controllerWithField:(UITextField *)field;
++ (instancetype)controllerWithFields:(NSArray *)fields;
 
 @property (nonatomic, assign) id<KeyboardControllerDelegate> delegate;
 @property (nonatomic, assign) id<UITextFieldDelegate> textFieldDelegate;
-@property (nonatomic, strong) NSArray *textFields;
+@property (nonatomic, strong) NSArray *fields;
 
-- (id)initWithTextFields:(NSArray *)textFields;
+- (id)initWithFields:(NSArray *)fields;
 
-- (void)moveToNextTextField;
-- (void)moveToPreviousTextField;
+- (void)moveToNextField;
+- (void)moveToPreviousField;
 - (void)closeKeyboard;
 
-- (NSInteger)indexForTextField:(UITextField *)textField;
+- (NSInteger)indexForField:(id)field;
 
 @end
 

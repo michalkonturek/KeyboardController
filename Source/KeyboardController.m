@@ -10,23 +10,23 @@
 
 @implementation KeyboardController
 
-+ (instancetype)controllerWithTextField:(UITextField *)textField {
-    return [[self alloc] initWithTextFields:@[textField]];
++ (instancetype)controllerWithField:(UITextField *)field {
+    return [[self alloc] initWithFields:@[field]];
 }
 
-+ (instancetype)controllerWithTextFields:(NSArray *)textFields {
-    return [[self alloc] initWithTextFields:textFields];
++ (instancetype)controllerWithFields:(NSArray *)fields {
+    return [[self alloc] initWithFields:fields];
 }
 
 - (void)dealloc {
     [self _unsubscribeFromNotifications];
 }
 
-- (id)initWithTextFields:(NSArray *)textFields {
+- (id)initWithFields:(NSArray *)fields {
     self = [super init];
     if (self) {
-        self.textFields = textFields;
-        [self _setupTextFields];
+        self.fields = fields;
+        [self _setupFields];
         [self _subscribeToNotifications];
     }
     return self;
@@ -37,9 +37,9 @@
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:reason userInfo:nil];
 }
 
-- (void)_setupTextFields {
-    for (UITextField *textField in self.textFields) {
-        textField.delegate = self;
+- (void)_setupFields {
+    for (UITextField *field in self.fields) {
+        [field setDelegate:self];
     }
 }
 
@@ -55,42 +55,35 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)moveToPreviousTextField {
-    for (int i = 0; i < [self.textFields count]; i++) {
-        if ([[self.textFields objectAtIndex:i] isEditing] && i != 0) {
-            [[self.textFields objectAtIndex:i - 1] becomeFirstResponder];
+- (void)moveToPreviousField {
+    for (int i = 0; i < [self.fields count]; i++) {
+        if ([[self.fields objectAtIndex:i] isEditing] && i != 0) {
+            [[self.fields objectAtIndex:i - 1] becomeFirstResponder];
             break;
         }
     }
 }
 
-- (void)moveToNextTextField {
-    for (int i = 0; i < [self.textFields count]; i++) {
-        if ([[self.textFields objectAtIndex:i] isEditing] && i != [self.textFields count] - 1) {
-            [[self.textFields objectAtIndex:i + 1] becomeFirstResponder];
+- (void)moveToNextField {
+    for (int i = 0; i < [self.fields count]; i++) {
+        if ([[self.fields objectAtIndex:i] isEditing] && i != [self.fields count] - 1) {
+            [[self.fields objectAtIndex:i + 1] becomeFirstResponder];
             break;
         }
     }
 }
 
 - (void)closeKeyboard {
-    for (UITextField *textField in self.textFields) {
-        if ([textField isEditing]) {
-            [textField resignFirstResponder];
+    for (UITextField *field in self.fields) {
+        if ([field isEditing]) {
+            [field resignFirstResponder];
             break;
         }
     }
 }
 
-- (NSInteger)indexForTextField:(UITextField *)textField {
-    NSInteger index = 0;
-    
-    for (UITextField *t in self.textFields) {
-        if (textField == t) break;
-        index++;
-    }
-    
-    return index;
+- (NSInteger)indexForField:(id)field {
+    return [self.fields indexOfObject:field];
 }
 
 
@@ -121,7 +114,7 @@
 }
 
 
-#pragma mark - UITextFieldDelegate methods
+#pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (!self.textFieldDelegate) return;
@@ -136,7 +129,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField.returnKeyType == UIReturnKeyNext) [self moveToNextTextField];
+    if (textField.returnKeyType == UIReturnKeyNext) [self moveToNextField];
     if (textField.returnKeyType == UIReturnKeyDone) [self closeKeyboard];
     return (textField.returnKeyType == UIReturnKeyDone);
 }
