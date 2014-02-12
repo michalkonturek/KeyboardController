@@ -12,7 +12,7 @@
 
 @interface KeyboardController : NSObject<UITextFieldDelegate>
 
-+ (instancetype)controllerWithField:(UITextField *)field;
++ (instancetype)controllerWithField:(id)field;
 + (instancetype)controllerWithFields:(NSArray *)fields;
 
 @property (nonatomic, assign) id<KeyboardControllerDelegate> delegate;

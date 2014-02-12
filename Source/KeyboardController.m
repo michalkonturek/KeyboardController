@@ -10,7 +10,7 @@
 
 @implementation KeyboardController
 
-+ (instancetype)controllerWithField:(UITextField *)field {
++ (instancetype)controllerWithField:(id)field {
     return [[self alloc] initWithFields:@[field]];
 }
 
@@ -38,7 +38,7 @@
 }
 
 - (void)_setupFields {
-    for (UITextField *field in self.fields) {
+    for (id field in self.fields) {
         [field setDelegate:self];
     }
 }
@@ -74,7 +74,7 @@
 }
 
 - (void)closeKeyboard {
-    for (UITextField *field in self.fields) {
+    for (id field in self.fields) {
         if ([field isEditing]) {
             [field resignFirstResponder];
             break;
