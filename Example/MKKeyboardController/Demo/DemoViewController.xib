@@ -6,11 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DemoViewController">
             <connections>
-                <outlet property="textField1" destination="vgm-3Z-s94" id="d7V-33-92p"/>
-                <outlet property="textField2" destination="Iyg-Ku-9PG" id="lKS-fI-eoQ"/>
-                <outlet property="textField3" destination="6wg-J0-nrs" id="bZR-TK-9xN"/>
-                <outlet property="textField4" destination="yHr-Vt-GDl" id="5e7-no-kVY"/>
-                <outlet property="textField5" destination="IrA-j9-RZh" id="OLr-dz-f3X"/>
+                <outlet property="field1" destination="vgm-3Z-s94" id="5F1-Y2-9it"/>
+                <outlet property="field2" destination="Iyg-Ku-9PG" id="wPo-IW-hm9"/>
+                <outlet property="field3" destination="6wg-J0-nrs" id="YCZ-6b-pB1"/>
+                <outlet property="field4" destination="yHr-Vt-GDl" id="aVI-eD-sUV"/>
+                <outlet property="field5" destination="IrA-j9-RZh" id="dfT-Yk-a1P"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
