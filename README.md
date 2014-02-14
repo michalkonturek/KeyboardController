@@ -17,27 +17,25 @@ Source code of this project is available under the standard MIT license. Please 
 
 ## Usage
 
-To use `KeyboardController`, simply initialize it with an array of `UITextField` objects.
+To use `KeyboardController`, simply initialize it with an array of `UITextField` of `UITextView` objects.
 
 ```objc
-id textFields = @[_textField1, _textField2, 
-				_textField3, _textField4, _textField5];
-self.keyboardController = [KeyboardController controllerWithTextFields:textFields];
+id fields = @[_field1, _field2, _field3, _field4, _field5];
+self.keyboardController = [KeyboardController controllerWithFields:fields];
+```
+
+You can interact with `KeyboardController` directly via the following methods:
+
+```objc
+- (void)moveToNextField;
+- (void)moveToPreviousField;
+- (void)closeKeyboard;
 ```
 
 `KeyboardController`, depending on a `returnKeyType` property of an `UITextField` instance, will:
 
 * `UIReturnKeyNext` - move to next text field
 * `UIReturnKeyDone` - close keyboard
-
-
-You can interact with `KeyboardController` directly via the following methods:
-
-```objc
-- (void)moveToNextTextField;
-- (void)moveToPreviousTextField;
-- (void)closeKeyboard;
-```
 
 
 ### KeyboardControllerDelegate 

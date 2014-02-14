@@ -12,25 +12,26 @@
 
 @interface KeyboardController : NSObject<UITextFieldDelegate>
 
-+ (id)controllerWithTextField:(UITextField *)textField;
-+ (id)controllerWithTextFields:(NSArray *)textFields;
++ (instancetype)controllerWithField:(id)field;
++ (instancetype)controllerWithFields:(NSArray *)fields;
 
 @property (nonatomic, assign) id<KeyboardControllerDelegate> delegate;
 @property (nonatomic, assign) id<UITextFieldDelegate> textFieldDelegate;
-@property (nonatomic, strong) NSArray *textFields;
+@property (nonatomic, strong) NSArray *fields;
 
-- (id)initWithTextFields:(NSArray *)textFields;
+- (id)initWithFields:(NSArray *)fields;
 
-- (void)moveToNextTextField;
-- (void)moveToPreviousTextField;
+- (void)moveToNextField;
+- (void)moveToPreviousField;
 - (void)closeKeyboard;
 
-- (NSInteger)indexForTextField:(UITextField *)textField;
+- (NSInteger)indexForField:(id)field;
 
 @end
 
 @protocol KeyboardControllerDelegate <NSObject>
 
+@optional
 - (void)controllerDidHideKeyboard:(KeyboardController *)controller;
 - (void)controllerDidShowKeyboard:(KeyboardController *)controller;
 - (void)controllerWillHideKeyboard:(KeyboardController *)controller;

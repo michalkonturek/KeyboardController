@@ -15,10 +15,10 @@ KeyboardControllerDelegate,
 UITextFieldDelegate
 >
 
-@property (nonatomic, strong) IBOutlet UITextField *textField1;
-@property (nonatomic, strong) IBOutlet UITextField *textField2;
-@property (nonatomic, strong) IBOutlet UITextField *textField3;
-@property (nonatomic, strong) IBOutlet UITextField *textField4;
-@property (nonatomic, strong) IBOutlet UITextField *textField5;
+@property (nonatomic, strong) IBOutlet UITextField *field1;
+@property (nonatomic, strong) IBOutlet UITextField *field2;
+@property (nonatomic, strong) IBOutlet UITextField *field3;
+@property (nonatomic, strong) IBOutlet UITextField *field4;
+@property (nonatomic, strong) IBOutlet UITextField *field5;
 
 @end

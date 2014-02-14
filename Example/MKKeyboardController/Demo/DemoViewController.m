@@ -23,8 +23,8 @@
 }
 
 - (void)_setupTextFields {
-    id textFields = @[_textField1, _textField2, _textField3, _textField4, _textField5];
-    self.keyboardController = [KeyboardController controllerWithTextFields:textFields];
+    id fields = @[_field1, _field2, _field3, _field4, _field5];
+    self.keyboardController = [KeyboardController controllerWithFields:fields];
     self.keyboardController.delegate = self;
     self.keyboardController.textFieldDelegate = self;
 }
@@ -41,13 +41,13 @@
 #pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField == self.textField4) [self _moveViewByY:-50];
-    if (textField == self.textField5) [self _moveViewByY:-200];
+    if (textField == self.field4) [self _moveViewByY:-50];
+    if (textField == self.field5) [self _moveViewByY:-200];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (textField == self.textField4) [self _moveViewByY:50];
-    if (textField == self.textField5) [self _moveViewByY:200];
+    if (textField == self.field4) [self _moveViewByY:50];
+    if (textField == self.field5) [self _moveViewByY:200];
 }
 
 
