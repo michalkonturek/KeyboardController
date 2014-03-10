@@ -78,6 +78,6 @@ This could be particulary useful if you would like to add individual behaviour t
 }
 ```
 
-- - - 
+<!-- - - - 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/michalkonturek/keyboardcontroller/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/michalkonturek/keyboardcontroller/trend.png)](https://bitdeli.com/free "Bitdeli Badge") -->
