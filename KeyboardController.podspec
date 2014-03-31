@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "KeyboardController"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "Simplifies iOS keyboard handling."
   s.homepage     = "https://github.com/michalkonturek/KeyboardController"
   s.license      = 'MIT'
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.source       = { 
     :git => "https://github.com/michalkonturek/KeyboardController.git", 
-    :tag => "2.0.0" 
+    :tag => "2.0.1" 
   }
 
   s.source_files = 'Source/**/*.{h,m}'
