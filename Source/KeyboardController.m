@@ -92,24 +92,28 @@
 - (void)_onKeyboardDidHide {
     if (!self.delegate) return;
     if (![self.delegate conformsToProtocol:@protocol(KeyboardControllerDelegate)]) return;
+    if (![self.delegate respondsToSelector:@selector(controllerDidHideKeyboard:)]) return;
     [self.delegate controllerDidHideKeyboard:self];
 }
 
 - (void)_onKeyboardDidShow {
     if (!self.delegate) return;
     if (![self.delegate conformsToProtocol:@protocol(KeyboardControllerDelegate)]) return;
+    if (![self.delegate respondsToSelector:@selector(controllerDidShowKeyboard:)]) return;
     [self.delegate controllerDidShowKeyboard:self];
 }
 
 - (void)_onKeyboardWillHide {
     if (!self.delegate) return;
     if (![self.delegate conformsToProtocol:@protocol(KeyboardControllerDelegate)]) return;
+    if (![self.delegate respondsToSelector:@selector(controllerWillHideKeyboard:)]) return;
     [self.delegate controllerWillHideKeyboard:self];
 }
 
 - (void)_onKeyboardWillShow {
     if (!self.delegate) return;
     if (![self.delegate conformsToProtocol:@protocol(KeyboardControllerDelegate)]) return;
+    if (![self.delegate respondsToSelector:@selector(controllerWillShowKeyboard:)]) return;
     [self.delegate controllerWillShowKeyboard:self];
 }
 
