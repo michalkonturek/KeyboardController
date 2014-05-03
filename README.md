@@ -1,8 +1,12 @@
 # KeyboardController
 
-[![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)](https://github.com/michalkonturek/KeyboardController/blob/master/LICENSE)
+[![Twitter](https://img.shields.io/badge/contact-@MichalKonturek-blue.svg?style=flat)](http://twitter.com/michalkonturek)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/michalkonturek/KeyboardController/blob/master/LICENSE)
+[![CocoaPods](https://img.shields.io/cocoapods/v/KeyboardController.svg?style=flat)](https://github.com/michalkonturek/KeyboardController)
+
+<!--[![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)](https://github.com/michalkonturek/KeyboardController/blob/master/LICENSE)
 [![Build Platform](https://cocoapod-badges.herokuapp.com/p/KeyboardController/badge.png)](https://github.com/michalkonturek/KeyboardController)
-[![Build Version](https://cocoapod-badges.herokuapp.com/v/KeyboardController/badge.png)](https://github.com/michalkonturek/KeyboardController)
+[![Build Version](https://cocoapod-badges.herokuapp.com/v/KeyboardController/badge.png)](https://github.com/michalkonturek/KeyboardController)-->
 
 Simplifies iOS keyboard handling.
 
