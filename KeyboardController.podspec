@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/michalkonturek'
   s.source       = { 
     :git => "https://github.com/michalkonturek/KeyboardController.git", 
-    :tag => "2.0.2" 
+    :tag => s.version.to_s
   }
 
   s.source_files = 'Source/**/*.{h,m}'
