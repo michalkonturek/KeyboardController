@@ -55,7 +55,7 @@
 }
 
 - (void)_setupFields {
-    for (id field in self.fields) {
+    for (UITextField *field in self.fields) {
         [field setDelegate:self];
     }
 }
