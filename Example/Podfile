@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'KeyboardController_Example' do
+  pod 'KeyboardController', :path => '../'
+
+  target 'KeyboardController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
