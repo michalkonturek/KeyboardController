@@ -1,12 +1,10 @@
 # KeyboardController
 
-[![Twitter](https://img.shields.io/badge/contact-@MichalKonturek-blue.svg?style=flat)](http://twitter.com/michalkonturek)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/michalkonturek/KeyboardController/blob/master/LICENSE)
-[![CocoaPods](https://img.shields.io/cocoapods/v/KeyboardController.svg?style=flat)](https://github.com/michalkonturek/KeyboardController)
-
-<!--[![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)](https://github.com/michalkonturek/KeyboardController/blob/master/LICENSE)
-[![Build Platform](https://cocoapod-badges.herokuapp.com/p/KeyboardController/badge.png)](https://github.com/michalkonturek/KeyboardController)
-[![Build Version](https://cocoapod-badges.herokuapp.com/v/KeyboardController/badge.png)](https://github.com/michalkonturek/KeyboardController)-->
+[![Version](https://img.shields.io/cocoapods/v/MKUnits.svg)](http://cocoapods.org/pods/KeyboardController)
+[![Build Status](https://travis-ci.org/michalkonturek/MKUnits.svg?branch=master)](https://travis-ci.org/michalkonturek/KeyboardController)
+[![Swift](https://img.shields.io/badge/%20compatible-swift%202.2-orange.svg)](http://swift.org)
+[![License](https://img.shields.io/cocoapods/l/MKUnits.svg)](http://cocoapods.org/pods/KeyboardController)
+[![Twitter](https://img.shields.io/badge/contact-@MichalKonturek-blue.svg)](http://twitter.com/michalkonturek)
 
 Simplifies iOS keyboard handling.
 
@@ -21,19 +19,19 @@ Source code of this project is available under the standard MIT license. Please 
 
 ## Usage
 
-To use `KeyboardController`, simply initialize it with an array of `UITextField` of `UITextView` objects.
+To use `KeyboardController`, simply initialize it with an array of `UITextField` objects.
 
-```objc
-id fields = @[_field1, _field2, _field3, _field4, _field5];
-self.keyboardController = [KeyboardController controllerWithFields:fields];
+```
+let fields = [field1!, field2!, field3!, field4!, field5!]
+self.controller = KeyboardController(fields: fields)
 ```
 
 You can interact with `KeyboardController` directly via the following methods:
 
-```objc
-- (void)moveToNextField;
-- (void)moveToPreviousField;
-- (void)closeKeyboard;
+```
+func moveToNextField()
+func moveToPreviousField()
+func closeKeyboard()
 ```
 
 `KeyboardController`, depending on a `returnKeyType` property of an `UITextField` instance, will:
@@ -46,16 +44,16 @@ You can interact with `KeyboardController` directly via the following methods:
 
 You could also take advantage of delegation methods:
 
-```objc
-- (void)controllerDidHideKeyboard:(KeyboardController *)controller;
-- (void)controllerDidShowKeyboard:(KeyboardController *)controller;
-- (void)controllerWillHideKeyboard:(KeyboardController *)controller;
-- (void)controllerWillShowKeyboard:(KeyboardController *)controller;
+```
+func controllerDidHideKeyboard(controller: KeyboardController)
+func controllerDidShowKeyboard(controller: KeyboardController)
+func controllerWillHideKeyboard(controller: KeyboardController)
+func controllerWillShowKeyboard(controller: KeyboardController)
 ```
 
 by setting a `delegate` property of a `KeyboardController`:
 
-```objc
+```
 self.keyboardController.delegate = self;
 ```
 
@@ -64,21 +62,21 @@ self.keyboardController.delegate = self;
 
 There is also an option of setting a `textFieldDelegate` property of all textFields that are under control of `KeyboardController`:
 
-```objc
+```
 self.keyboardController.textFieldDelegate = self;
 ```
 
 This could be particulary useful if you would like to add individual behaviour to `UITextFields` objects.
 
-```objc
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField == self.textField4) [self _moveViewByY:-50];
-    if (textField == self.textField5) [self _moveViewByY:-200];
+```
+func textFieldDidBeginEditing(textField: UITextField) {
+    if (textField == self.field4) { self.moveViewBy(-10) }
+    if (textField == self.field5) { self.moveViewBy(-200) }
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (textField == self.textField4) [self _moveViewByY:50];
-    if (textField == self.textField5) [self _moveViewByY:200];
+func textFieldDidEndEditing(textField: UITextField) {
+    if (textField == self.field4) { self.moveViewBy(10) }
+    if (textField == self.field5) { self.moveViewBy(200) }
 }
 ```
 
@@ -89,8 +87,3 @@ This could be particulary useful if you would like to add individual behaviour t
 3. Commit your changes (`git commit -am 'Added new-feature'`).
 4. Push to the branch (`git push origin new-feature`).
 5. Create new Pull Request.
-
-
-<!-- - - - 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/michalkonturek/keyboardcontroller/trend.png)](https://bitdeli.com/free "Bitdeli Badge") -->

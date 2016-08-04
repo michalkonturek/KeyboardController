@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="KeyboardController_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mdu-w7-uKS">
+                                <rect key="frame" x="20" y="100" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZxF-2m-tSJ">
+                                <rect key="frame" x="20" y="155" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="egZ-NJ-yrt">
+                                <rect key="frame" x="20" y="210" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p3S-gm-aoe">
+                                <rect key="frame" x="20" y="265" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bfa-Wk-n6S">
+                                <rect key="frame" x="20" y="458" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.74117648599999997" green="0.76470589639999997" blue="0.78039217000000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="Bfa-Wk-n6S" secondAttribute="bottom" constant="80" id="5FW-Ui-xVN"/>
+                            <constraint firstItem="ZxF-2m-tSJ" firstAttribute="trailing" secondItem="p3S-gm-aoe" secondAttribute="trailing" id="9dP-ai-p3a"/>
+                            <constraint firstItem="ZxF-2m-tSJ" firstAttribute="leading" secondItem="egZ-NJ-yrt" secondAttribute="leading" id="AJY-fj-XG5"/>
+                            <constraint firstItem="ZxF-2m-tSJ" firstAttribute="trailing" secondItem="egZ-NJ-yrt" secondAttribute="trailing" id="Lwi-Nv-lhH"/>
+                            <constraint firstItem="Bfa-Wk-n6S" firstAttribute="leading" secondItem="p3S-gm-aoe" secondAttribute="leading" id="WU2-GH-mkY"/>
+                            <constraint firstItem="ZxF-2m-tSJ" firstAttribute="leading" secondItem="p3S-gm-aoe" secondAttribute="leading" id="ZNX-mi-NLp"/>
+                            <constraint firstItem="mdu-w7-uKS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="bU5-iO-zA8"/>
+                            <constraint firstItem="Bfa-Wk-n6S" firstAttribute="trailing" secondItem="p3S-gm-aoe" secondAttribute="trailing" id="cio-Fq-5Yt"/>
+                            <constraint firstItem="p3S-gm-aoe" firstAttribute="leading" secondItem="egZ-NJ-yrt" secondAttribute="leading" id="clc-KC-67K"/>
+                            <constraint firstAttribute="trailing" secondItem="mdu-w7-uKS" secondAttribute="trailing" constant="20" id="d8p-V4-OSc"/>
+                            <constraint firstItem="ZxF-2m-tSJ" firstAttribute="leading" secondItem="mdu-w7-uKS" secondAttribute="leading" id="gD2-3K-JBu"/>
+                            <constraint firstItem="mdu-w7-uKS" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="100" id="lhb-oG-VgB"/>
+                            <constraint firstItem="egZ-NJ-yrt" firstAttribute="top" secondItem="ZxF-2m-tSJ" secondAttribute="bottom" constant="25" id="m2T-t9-Gn6"/>
+                            <constraint firstItem="ZxF-2m-tSJ" firstAttribute="trailing" secondItem="mdu-w7-uKS" secondAttribute="trailing" id="pXE-G0-n3J"/>
+                            <constraint firstItem="ZxF-2m-tSJ" firstAttribute="top" secondItem="mdu-w7-uKS" secondAttribute="bottom" constant="25" id="qLB-ge-qcU"/>
+                            <constraint firstItem="p3S-gm-aoe" firstAttribute="top" secondItem="egZ-NJ-yrt" secondAttribute="bottom" constant="25" id="vH0-zs-nej"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="field1" destination="mdu-w7-uKS" id="Cjk-9Y-akL"/>
+                        <outlet property="field2" destination="ZxF-2m-tSJ" id="mKW-pp-wtT"/>
+                        <outlet property="field3" destination="egZ-NJ-yrt" id="fex-5i-6pV"/>
+                        <outlet property="field4" destination="p3S-gm-aoe" id="L16-NC-6og"/>
+                        <outlet property="field5" destination="Bfa-Wk-n6S" id="OXR-HR-OxX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="288" y="448"/>
+        </scene>
+    </scenes>
+</document>
