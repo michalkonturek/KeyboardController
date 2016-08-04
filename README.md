@@ -21,14 +21,14 @@ Source code of this project is available under the standard MIT license. Please 
 
 To use `KeyboardController`, simply initialize it with an array of `UITextField` objects.
 
-```
+```swift
 let fields = [field1!, field2!, field3!, field4!, field5!]
 self.controller = KeyboardController(fields: fields)
 ```
 
 You can interact with `KeyboardController` directly via the following methods:
 
-```
+```swift
 func moveToNextField()
 func moveToPreviousField()
 func closeKeyboard()
@@ -44,7 +44,7 @@ func closeKeyboard()
 
 You could also take advantage of delegation methods:
 
-```
+```swift
 func controllerDidHideKeyboard(controller: KeyboardController)
 func controllerDidShowKeyboard(controller: KeyboardController)
 func controllerWillHideKeyboard(controller: KeyboardController)
@@ -53,7 +53,7 @@ func controllerWillShowKeyboard(controller: KeyboardController)
 
 by setting a `delegate` property of a `KeyboardController`:
 
-```
+```swift
 self.keyboardController.delegate = self;
 ```
 
@@ -62,13 +62,13 @@ self.keyboardController.delegate = self;
 
 There is also an option of setting a `textFieldDelegate` property of all textFields that are under control of `KeyboardController`:
 
-```
+```swift
 self.keyboardController.textFieldDelegate = self;
 ```
 
 This could be particulary useful if you would like to add individual behaviour to `UITextFields` objects.
 
-```
+```swift
 func textFieldDidBeginEditing(textField: UITextField) {
     if (textField == self.field4) { self.moveViewBy(-10) }
     if (textField == self.field5) { self.moveViewBy(-200) }
