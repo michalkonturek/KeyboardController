@@ -36,20 +36,20 @@ public class KeyboardController: NSObject {
     public weak var delegate: KeyboardControllerDelegate?
     public weak var textFieldDelegate: UITextFieldDelegate?
     let fields: Array<UITextField>
-    
+
     convenience public init(field field: UITextField) {
         self.init(fields: [field])
     }
-    
+
     public init(fields fields: Array<UITextField>) {
         self.fields = fields
         super.init()
-        
+
         for field in self.fields {
             field.delegate = self
         }
     }
-    
+
     public func closeKeyboard() {
         for field in self.fields {
             if field.editing {
@@ -60,7 +60,7 @@ public class KeyboardController: NSObject {
 }
 
 extension KeyboardController {
-    
+
     public func moveToPreviousField() {
         for index in self.fields.indices {
             if self.fields[index].editing && index != 0 {
@@ -69,7 +69,7 @@ extension KeyboardController {
             }
         }
     }
-    
+
     public func moveToNextField() {
         for index in self.fields.indices {
             if self.fields[index].editing && index != (self.fields.count - 1) {
@@ -81,15 +81,15 @@ extension KeyboardController {
 }
 
 extension KeyboardController: UITextFieldDelegate {
-    
+
     public func textFieldDidBeginEditing(textField: UITextField) {
         self.textFieldDelegate?.textFieldDidBeginEditing?(textField)
     }
-    
+
     public func textFieldDidEndEditing(textField: UITextField) {
         self.textFieldDelegate?.textFieldDidEndEditing?(textField)
     }
-    
+
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.returnKeyType == .Next { self.moveToNextField() }
         if textField.returnKeyType == .Done { self.closeKeyboard() }
