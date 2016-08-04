@@ -37,11 +37,11 @@ public class KeyboardController: NSObject {
     public weak var textFieldDelegate: UITextFieldDelegate?
     let fields: Array<UITextField>
 
-    convenience public init(field field: UITextField) {
+    convenience public init(field: UITextField) {
         self.init(fields: [field])
     }
 
-    public init(fields fields: Array<UITextField>) {
+    public init(fields: Array<UITextField>) {
         self.fields = fields
         super.init()
 
