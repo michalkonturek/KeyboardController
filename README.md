@@ -1,29 +1,89 @@
 # KeyboardController
 
-[![CI Status](http://img.shields.io/travis/Michal Konturek/KeyboardController.svg?style=flat)](https://travis-ci.org/Michal Konturek/KeyboardController)
-[![Version](https://img.shields.io/cocoapods/v/KeyboardController.svg?style=flat)](http://cocoapods.org/pods/KeyboardController)
-[![License](https://img.shields.io/cocoapods/l/KeyboardController.svg?style=flat)](http://cocoapods.org/pods/KeyboardController)
-[![Platform](https://img.shields.io/cocoapods/p/KeyboardController.svg?style=flat)](http://cocoapods.org/pods/KeyboardController)
+[![Version](https://img.shields.io/cocoapods/v/MKUnits.svg)](http://cocoapods.org/pods/KeyboardController)
+[![Build Status](https://travis-ci.org/michalkonturek/MKUnits.svg?branch=master)](https://travis-ci.org/michalkonturek/KeyboardController)
+[![Swift](https://img.shields.io/badge/%20compatible-swift%202.2-orange.svg)](http://swift.org)
+[![License](https://img.shields.io/cocoapods/l/MKUnits.svg)](http://cocoapods.org/pods/KeyboardController)
+[![Twitter](https://img.shields.io/badge/contact-@MichalKonturek-blue.svg)](http://twitter.com/michalkonturek)
 
-## Example
+Simplifies iOS keyboard handling.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
-## Installation
-
-KeyboardController is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "KeyboardController"
-```
-
-## Author
-
-Michal Konturek, michal.konturek@gmail.com
 
 ## License
 
-KeyboardController is available under the MIT license. See the LICENSE file for more info.
+Source code of this project is available under the standard MIT license. Please see [the license file][LICENSE].
+
+[PODS]:http://cocoapods.org/
+[LICENSE]:https://github.com/michalkonturek/KeyboardController/blob/master/LICENSE
+
+
+## Usage
+
+To use `KeyboardController`, simply initialize it with an array of `UITextField` objects.
+
+```
+let fields = [field1!, field2!, field3!, field4!, field5!]
+self.controller = KeyboardController(fields: fields)
+```
+
+You can interact with `KeyboardController` directly via the following methods:
+
+```
+func moveToNextField()
+func moveToPreviousField()
+func closeKeyboard()
+```
+
+`KeyboardController`, depending on a `returnKeyType` property of an `UITextField` instance, will:
+
+* `UIReturnKeyNext` - move to next text field
+* `UIReturnKeyDone` - close keyboard
+
+
+### KeyboardControllerDelegate 
+
+You could also take advantage of delegation methods:
+
+```
+func controllerDidHideKeyboard(controller: KeyboardController)
+func controllerDidShowKeyboard(controller: KeyboardController)
+func controllerWillHideKeyboard(controller: KeyboardController)
+func controllerWillShowKeyboard(controller: KeyboardController)
+```
+
+by setting a `delegate` property of a `KeyboardController`:
+
+```
+self.keyboardController.delegate = self;
+```
+
+
+### UITextFieldDelegate 
+
+There is also an option of setting a `textFieldDelegate` property of all textFields that are under control of `KeyboardController`:
+
+```
+self.keyboardController.textFieldDelegate = self;
+```
+
+This could be particulary useful if you would like to add individual behaviour to `UITextFields` objects.
+
+```
+func textFieldDidBeginEditing(textField: UITextField) {
+    if (textField == self.field4) { self.moveViewBy(-10) }
+    if (textField == self.field5) { self.moveViewBy(-200) }
+}
+
+func textFieldDidEndEditing(textField: UITextField) {
+    if (textField == self.field4) { self.moveViewBy(10) }
+    if (textField == self.field5) { self.moveViewBy(200) }
+}
+```
+
+## Contributing
+
+1. Fork it.
+2. Create your feature branch (`git checkout -b new-feature`).
+3. Commit your changes (`git commit -am 'Added new-feature'`).
+4. Push to the branch (`git push origin new-feature`).
+5. Create new Pull Request.
