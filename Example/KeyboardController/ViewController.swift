@@ -27,11 +27,6 @@ class ViewController: UIViewController {
         self.controller?.delegate = self
         self.controller?.textFieldDelegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 }
 
 extension ViewController: UITextFieldDelegate {
@@ -53,21 +48,21 @@ extension ViewController: UITextFieldDelegate {
     }
 }
 
-extension ViewController: KeyboardControllerDelegate {
+extension ViewController: KeyboardNotificationHandling {
     
-    func controllerDidHideKeyboard(controller: KeyboardController) {
+    func onKeyboardDidHide() {
         print("\(#function)")
     }
     
-    func controllerDidShowKeyboard(controller: KeyboardController) {
+    func onKeyboardDidShow() {
         print("\(#function)")
     }
     
-    func controllerWillHideKeyboard(controller: KeyboardController) {
+    func onKeyboardWillHide() {
         print("\(#function)")
     }
     
-    func controllerWillShowKeyboard(controller: KeyboardController) {
+    func onKeyboardWillShow() {
         print("\(#function)")
     }
 }

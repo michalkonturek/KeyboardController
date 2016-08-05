@@ -25,15 +25,15 @@
 
 import UIKit
 
-public protocol KeyboardControllerDelegate: class {
-    func controllerDidHideKeyboard(controller: KeyboardController)
-    func controllerDidShowKeyboard(controller: KeyboardController)
-    func controllerWillHideKeyboard(controller: KeyboardController)
-    func controllerWillShowKeyboard(controller: KeyboardController)
+public protocol KeyboardNotificationHandling: class {
+    func onKeyboardDidHide()
+    func onKeyboardDidShow()
+    func onKeyboardWillHide()
+    func onKeyboardWillShow()
 }
 
 public class KeyboardController: NSObject {
-    public weak var delegate: KeyboardControllerDelegate?
+    public weak var delegate: KeyboardNotificationHandling?
     public weak var textFieldDelegate: UITextFieldDelegate?
     let fields: Array<UITextField>
 
@@ -105,23 +105,23 @@ extension KeyboardController: UITextFieldDelegate {
     }
 }
 
-// MARK: - Keyboard Notifications
-extension KeyboardController {
+// MARK: - KeyboardNotificationHandling
+extension KeyboardController: KeyboardNotificationHandling {
     
-    func onKeyboardDidHide() {
-        self.delegate?.controllerDidHideKeyboard(self)
+    public func onKeyboardDidHide() {
+        self.delegate?.onKeyboardDidHide()
     }
     
-    func onKeyboardDidShow() {
-        self.delegate?.controllerDidShowKeyboard(self)
+    public func onKeyboardDidShow() {
+        self.delegate?.onKeyboardDidShow()
     }
     
-    func onKeyboardWillHide() {
-        self.delegate?.controllerWillHideKeyboard(self)
+    public func onKeyboardWillHide() {
+        self.delegate?.onKeyboardWillHide()
     }
     
-    func onKeyboardWillShow() {
-        self.delegate?.controllerWillShowKeyboard(self)
+    public func onKeyboardWillShow() {
+        self.delegate?.onKeyboardWillShow()
     }
     
     func subscribeToNotifications() {
