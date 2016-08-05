@@ -55,6 +55,10 @@ public class KeyboardController: NSObject {
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+}
+
+// MARK: Keybaord Handling
+extension KeyboardController {
     
     public func closeKeyboard() {
         for field in self.fields {
@@ -63,10 +67,6 @@ public class KeyboardController: NSObject {
             }
         }
     }
-}
-
-// MARK: Keybaord Handling
-extension KeyboardController {
     
     public func moveToPreviousField() {
         for index in self.fields.indices {
