@@ -48,8 +48,14 @@ public class KeyboardController: NSObject {
         for field in self.fields {
             field.delegate = self
         }
+        
+        self.subscribeToNotifications()
     }
-
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     public func closeKeyboard() {
         for field in self.fields {
             if field.editing {
@@ -59,8 +65,9 @@ public class KeyboardController: NSObject {
     }
 }
 
+// MARK: Keybaord Handling
 extension KeyboardController {
-
+    
     public func moveToPreviousField() {
         for index in self.fields.indices {
             if self.fields[index].editing && index != 0 {
@@ -80,6 +87,7 @@ extension KeyboardController {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension KeyboardController: UITextFieldDelegate {
 
     public func textFieldDidBeginEditing(textField: UITextField) {
@@ -94,5 +102,45 @@ extension KeyboardController: UITextFieldDelegate {
         if textField.returnKeyType == .Next { self.moveToNextField() }
         if textField.returnKeyType == .Done { self.closeKeyboard() }
         return textField.returnKeyType == .Done
+    }
+}
+
+// MARK: - Keyboard Notifications
+extension KeyboardController {
+    
+    func onKeyboardDidHide() {
+        self.delegate?.controllerDidHideKeyboard(self)
+    }
+    
+    func onKeyboardDidShow() {
+        self.delegate?.controllerDidShowKeyboard(self)
+    }
+    
+    func onKeyboardWillHide() {
+        self.delegate?.controllerWillHideKeyboard(self)
+    }
+    
+    func onKeyboardWillShow() {
+        self.delegate?.controllerWillShowKeyboard(self)
+    }
+    
+    func subscribeToNotifications() {
+        let center = NSNotificationCenter.defaultCenter()
+        center.addObserver(self,
+                           selector: #selector(onKeyboardDidHide),
+                           name: UIKeyboardDidHideNotification,
+                           object: nil)
+        center.addObserver(self,
+                           selector: #selector(onKeyboardDidShow),
+                           name: UIKeyboardDidShowNotification,
+                           object: nil)
+        center.addObserver(self,
+                           selector: #selector(onKeyboardWillHide),
+                           name: UIKeyboardWillHideNotification,
+                           object: nil)
+        center.addObserver(self,
+                           selector: #selector(onKeyboardWillShow),
+                           name: UIKeyboardWillShowNotification,
+                           object: nil)
     }
 }

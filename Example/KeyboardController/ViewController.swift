@@ -56,18 +56,18 @@ extension ViewController: UITextFieldDelegate {
 extension ViewController: KeyboardControllerDelegate {
     
     func controllerDidHideKeyboard(controller: KeyboardController) {
-        
+        print("\(#function)")
     }
     
     func controllerDidShowKeyboard(controller: KeyboardController) {
-        
+        print("\(#function)")
     }
     
     func controllerWillHideKeyboard(controller: KeyboardController) {
-        
+        print("\(#function)")
     }
     
     func controllerWillShowKeyboard(controller: KeyboardController) {
-        
+        print("\(#function)")
     }
 }
