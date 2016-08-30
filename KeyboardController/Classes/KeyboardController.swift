@@ -28,7 +28,7 @@ import UIKit
 /**
  `KeyboardController` delegate.
  
- A class with ability to receive changes in keyboard status.
+ A `class` with ability to receive changes in keyboard status.
  */
 public protocol KeyboardNotificationHandling: class {
     
