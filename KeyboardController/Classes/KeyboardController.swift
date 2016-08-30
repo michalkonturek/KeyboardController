@@ -25,22 +25,81 @@
 
 import UIKit
 
+/**
+ `KeyboardController` delegate.
+ 
+ A class with ability to receive changes in keyboard status.
+ */
 public protocol KeyboardNotificationHandling: class {
+    
+    /**
+     Called when keyboard was hidden.
+     
+     - author: Michal Konturek
+     */
     func onKeyboardDidHide()
+    
+    /**
+     Called when keyboard was shown.
+     
+     - author: Michal Konturek
+     */
     func onKeyboardDidShow()
+    
+    /**
+     Called when keyboard is about to be hidden.
+     
+     - author: Michal Konturek
+     */
     func onKeyboardWillHide()
+    
+    /**
+     Called when keyboard is about to be shown.
+     
+     - author: Michal Konturek
+     */
     func onKeyboardWillShow()
 }
 
+/**
+ A `class` that controls keyboard.
+ */
 public class KeyboardController: NSObject {
+    
+    /**
+     A delegate that conforms to `KeyboardNotificationHandling` protocol.
+     
+     - author: Michal Konturek
+     */
     public weak var delegate: KeyboardNotificationHandling?
+    
+    /**
+     A delegate that conforms to `UITextFieldDelegate` protocol.
+     
+     - author: Michal Konturek
+     */
     public weak var textFieldDelegate: UITextFieldDelegate?
+    
     let fields: Array<UITextField>
 
+    /**
+     Instantiates `KeyboardController` object.
+     
+     - parameter field: an `UITextField` object.
+     
+     - author: Michal Konturek
+     */
     convenience public init(field: UITextField) {
         self.init(fields: [field])
     }
 
+    /**
+     Instantiates `KeyboardController` object.
+     
+     - parameter fields: an array of `UITextField` objects.
+     
+     - author: Michal Konturek
+     */
     public init(fields: Array<UITextField>) {
         self.fields = fields
         super.init()
@@ -60,6 +119,11 @@ public class KeyboardController: NSObject {
 // MARK: Keybaord Handling
 extension KeyboardController {
     
+    /**
+     Closes keyboard.
+     
+     - author: Michal Konturek
+     */
     public func closeKeyboard() {
         for field in self.fields {
             if field.editing {
@@ -68,6 +132,11 @@ extension KeyboardController {
         }
     }
     
+    /**
+     Sets previous text field as first responder.
+     
+     - author: Michal Konturek
+     */
     public func moveToPreviousField() {
         for index in self.fields.indices {
             if self.fields[index].editing && index != 0 {
@@ -77,6 +146,11 @@ extension KeyboardController {
         }
     }
 
+    /**
+     Sets next text field as first responder.
+     
+     - author: Michal Konturek
+     */
     public func moveToNextField() {
         for index in self.fields.indices {
             if self.fields[index].editing && index != (self.fields.count - 1) {
@@ -108,18 +182,38 @@ extension KeyboardController: UITextFieldDelegate {
 // MARK: - KeyboardNotificationHandling
 extension KeyboardController: KeyboardNotificationHandling {
     
+    /**
+     Called when keyboard was hidden.
+     
+     - author: Michal Konturek
+     */
     public func onKeyboardDidHide() {
         self.delegate?.onKeyboardDidHide()
     }
     
+    /**
+     Called when keyboard was shown.
+     
+     - author: Michal Konturek
+     */
     public func onKeyboardDidShow() {
         self.delegate?.onKeyboardDidShow()
     }
     
+    /**
+     Called when keyboard is about to be hidden.
+     
+     - author: Michal Konturek
+     */
     public func onKeyboardWillHide() {
         self.delegate?.onKeyboardWillHide()
     }
     
+    /**
+     Called when keyboard is about to be shown.
+     
+     - author: Michal Konturek
+     */
     public func onKeyboardWillShow() {
         self.delegate?.onKeyboardWillShow()
     }
