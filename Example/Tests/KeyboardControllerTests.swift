@@ -179,7 +179,34 @@ class KeyboardControllerTests: XCTestCase {
         XCTAssertTrue(self.mockTextFieldDelegate.didTextFieldDidEndEditing)
         XCTAssertTrue(self.mockTextFieldDelegate.capturedTextField === self.mockTextField1)
     }
+    
+    func test_textFieldShouldReturn_returnsTrue() {
         
+        // given
+        self.mockTextField1.editing = true
+        self.mockTextField1.returnKeyType = .Done
+        
+        // when
+        let result = self.sut.textFieldShouldReturn(self.mockTextField1)
+        
+        // then
+        XCTAssertTrue(result)
+        XCTAssertTrue(self.mockTextField1.didResignFirstResponder)
+    }
+    
+    func test_textFieldShouldReturn_returnsFalse() {
+        
+        // given
+        self.mockTextField1.editing = true
+        self.mockTextField1.returnKeyType = .Next
+        
+        // when
+        let result = self.sut.textFieldShouldReturn(self.mockTextField1)
+        
+        // then
+        XCTAssertFalse(result)
+        XCTAssertTrue(self.mockTextField2.didBecomeFirstResponder)
+    }
 }
 
 class MockTextFieldDelegate: NSObject, UITextFieldDelegate {
