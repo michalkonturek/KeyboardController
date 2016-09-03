@@ -80,10 +80,40 @@ class KeyboardControllerTests: XCTestCase {
         XCTAssertTrue(registered.object === object)
     }
     
+    func test_closeKeyboard() {
+        
+        // given
+        self.mockTextField1.editing = false
+        self.mockTextField2.editing = true
+        
+        
+        // when
+        self.sut.closeKeyboard()
+        
+        // then
+        XCTAssertFalse(self.mockTextField1.didResignFirstResponder)
+        XCTAssertTrue(self.mockTextField2.didResignFirstResponder)
+    }
+    
 }
 
 class MockTextField: UITextField {
+    internal var mockEditing: Bool = false
+    internal var didResignFirstResponder: Bool = false
     
+    override internal var editing: Bool {
+        get {
+            return mockEditing
+        }
+        set {
+            mockEditing = newValue
+        }
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        self.didResignFirstResponder = true
+        return true
+    }
 }
 
 class FakeNotificationCenter: NSNotificationCenter {
