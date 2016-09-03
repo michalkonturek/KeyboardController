@@ -255,7 +255,10 @@ class FakeNotificationCenter: NSNotificationCenter {
     
     override init () {}
     
-    override func addObserver(observer: AnyObject, selector aSelector: Selector, name aName: String?, object anObject: AnyObject?) {
+    override func addObserver(observer: AnyObject,
+                              selector aSelector: Selector,
+                                       name aName: String?,
+                                            object anObject: AnyObject?) {
         
         let item = TestRegisteredObserver()
         item.observer = observer
@@ -265,9 +268,14 @@ class FakeNotificationCenter: NSNotificationCenter {
         self.registeredObservers.append(item)
     }
     
-//    override func postNotificationName(aName: String, object anObject: AnyObject?) {
-//        self.observer.performSelector(self.selector)
-//    }
+    override func postNotificationName(aName: String, object anObject: AnyObject?) {
+        for item in self.registeredObservers {
+            if item.name == aName {
+                item.observer.performSelector(item.selector)
+                break
+            }
+        }
+    }
 }
 
 class TestRegisteredObserver {
