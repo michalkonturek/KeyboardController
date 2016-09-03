@@ -1,5 +1,5 @@
 PODS:
-  - KeyboardController (3.0.0)
+  - KeyboardController (3.1.0)
 
 DEPENDENCIES:
   - KeyboardController (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  KeyboardController: 4fee1d9cb5fb65cf676ef910d36b4f104aa9add6
+  KeyboardController: d0ad85dcccb466d50117d525255e27b009edc3d3
 
-PODFILE CHECKSUM: c4b02c4baf1a2de0b48a293925f3b6be2f2c8aa9
+PODFILE CHECKSUM: e2c087a6f10dd7d1520687a7f4946c0291fd3424
 
 COCOAPODS: 1.0.1
