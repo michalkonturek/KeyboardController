@@ -33,21 +33,25 @@ class KeyboardControllerTests: XCTestCase {
     var sut: KeyboardController!
     
     let fakeCenter: FakeNotificationCenter = FakeNotificationCenter()
+    let mockTextField1: MockTextField = MockTextField()
+    let mockTextField2: MockTextField = MockTextField()
+    var mockFields: Array<MockTextField> = []
     
     override func setUp() {
         super.setUp()
+        
+        self.mockFields = [mockTextField1, mockTextField2]
+        self.sut = KeyboardController(fields: self.mockFields,
+                                      notificationCenter: self.fakeCenter)
     }
     
     func test_init() {
-        let mockTextField = UITextField()
-        let fields = [mockTextField]
-        
-        // when
-        self.sut = KeyboardController(fields: fields, notificationCenter: self.fakeCenter)
-        
+    
         // then
-        XCTAssertTrue(self.sut.fields == fields)
-        XCTAssertTrue(mockTextField.delegate === self.sut)
+        XCTAssertTrue(self.sut.fields == self.mockFields)
+        XCTAssertTrue(self.sut.notificationCenter === self.fakeCenter)
+        XCTAssertTrue(self.mockTextField1.delegate === self.sut)
+        XCTAssertTrue(self.mockTextField2.delegate === self.sut)
         
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[0],
                                       observer: self.sut,
