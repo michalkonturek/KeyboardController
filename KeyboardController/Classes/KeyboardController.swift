@@ -81,16 +81,32 @@ public class KeyboardController: NSObject {
     public weak var textFieldDelegate: UITextFieldDelegate?
     
     let fields: Array<UITextField>
+    var notificationCenter: NSNotificationCenter
 
     /**
      Instantiates `KeyboardController` object.
+     
+     - important: Initialises with default `NSNotificationCenter`.
      
      - parameter field: an `UITextField` object.
      
      - author: Michal Konturek
      */
     convenience public init(field: UITextField) {
-        self.init(fields: [field])
+        self.init(fields: [field], notificationCenter: NSNotificationCenter.defaultCenter())
+    }
+
+    /**
+     Instantiates `KeyboardController` object.
+     
+     - important: Initialises with default `NSNotificationCenter`.
+     
+     - parameter fields: an array of `UITextField` objects.
+     
+     - author: Michal Konturek
+     */
+    convenience public init(fields: Array<UITextField>) {
+        self.init(fields: fields, notificationCenter: NSNotificationCenter.defaultCenter())
     }
 
     /**
@@ -100,8 +116,9 @@ public class KeyboardController: NSObject {
      
      - author: Michal Konturek
      */
-    public init(fields: Array<UITextField>) {
+    public init(fields: Array<UITextField>, notificationCenter: NSNotificationCenter) {
         self.fields = fields
+        self.notificationCenter = notificationCenter
         super.init()
 
         for field in self.fields {
@@ -112,7 +129,7 @@ public class KeyboardController: NSObject {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        self.notificationCenter.removeObserver(self)
     }
 }
 
@@ -219,7 +236,7 @@ extension KeyboardController: KeyboardNotificationHandling {
     }
     
     func subscribeToNotifications() {
-        let center = NSNotificationCenter.defaultCenter()
+        let center = self.notificationCenter
         center.addObserver(self,
                            selector: #selector(onKeyboardDidHide),
                            name: UIKeyboardDidHideNotification,
