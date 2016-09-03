@@ -35,12 +35,13 @@ class KeyboardControllerTests: XCTestCase {
     let fakeCenter: FakeNotificationCenter = FakeNotificationCenter()
     let mockTextField1: MockTextField = MockTextField()
     let mockTextField2: MockTextField = MockTextField()
+    let mockTextField3: MockTextField = MockTextField()
     var mockFields: Array<MockTextField> = []
     
     override func setUp() {
         super.setUp()
         
-        self.mockFields = [mockTextField1, mockTextField2]
+        self.mockFields = [self.mockTextField1, self.mockTextField2, self.mockTextField3]
         self.sut = KeyboardController(fields: self.mockFields,
                                       notificationCenter: self.fakeCenter)
     }
@@ -52,6 +53,7 @@ class KeyboardControllerTests: XCTestCase {
         XCTAssertTrue(self.sut.notificationCenter === self.fakeCenter)
         XCTAssertTrue(self.mockTextField1.delegate === self.sut)
         XCTAssertTrue(self.mockTextField2.delegate === self.sut)
+        XCTAssertTrue(self.mockTextField3.delegate === self.sut)
         
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[0],
                                       observer: self.sut,
@@ -83,7 +85,6 @@ class KeyboardControllerTests: XCTestCase {
     func test_closeKeyboard() {
         
         // given
-        self.mockTextField1.editing = false
         self.mockTextField2.editing = true
         
         // when
@@ -92,12 +93,12 @@ class KeyboardControllerTests: XCTestCase {
         // then
         XCTAssertFalse(self.mockTextField1.didResignFirstResponder)
         XCTAssertTrue(self.mockTextField2.didResignFirstResponder)
+        XCTAssertFalse(self.mockTextField3.didResignFirstResponder)
     }
     
     func test_moveToPreviousField() {
         
         // given
-        self.mockTextField1.editing = false
         self.mockTextField2.editing = true
         
         // when
@@ -106,19 +107,20 @@ class KeyboardControllerTests: XCTestCase {
         // then
         XCTAssertTrue(self.mockTextField1.didBecomeFirstResponder)
         XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
+        XCTAssertFalse(self.mockTextField3.didBecomeFirstResponder)
     }
     
     func test_moveToPreviousField_doesNot() {
         
         // given
         self.mockTextField1.editing = true
-        self.mockTextField2.editing = false
         
         // when
         self.sut.moveToPreviousField()
         
         // then
         XCTAssertFalse(self.mockTextField1.didBecomeFirstResponder)
+        XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
         XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
     }
     
