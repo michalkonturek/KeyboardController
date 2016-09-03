@@ -153,7 +153,9 @@ public class KeyboardController: NSObject {
     }
 }
 
+
 // MARK: Keybaord Handling
+
 protocol KeyboardHandling {
     
     /**
@@ -222,7 +224,9 @@ extension KeyboardController: KeyboardHandling {
     }
 }
 
+
 // MARK: - UITextFieldDelegate
+
 extension KeyboardController: UITextFieldDelegate {
 
     public func textFieldDidBeginEditing(textField: UITextField) {
@@ -240,7 +244,9 @@ extension KeyboardController: UITextFieldDelegate {
     }
 }
 
+
 // MARK: - KeyboardNotificationHandling
+
 extension KeyboardController: KeyboardNotificationHandling {
     
     /**

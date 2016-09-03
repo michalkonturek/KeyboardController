@@ -33,6 +33,8 @@ class KeyboardControllerTests: XCTestCase {
     var sut: KeyboardController!
     
     let fakeCenter: FakeNotificationCenter = FakeNotificationCenter()
+    
+    let mockTextFieldDelegate: MockTextFieldDelegate = MockTextFieldDelegate()
     let mockTextField1: MockTextField = MockTextField()
     let mockTextField2: MockTextField = MockTextField()
     let mockTextField3: MockTextField = MockTextField()
@@ -150,6 +152,49 @@ class KeyboardControllerTests: XCTestCase {
         XCTAssertFalse(self.mockTextField1.didBecomeFirstResponder)
         XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
         XCTAssertFalse(self.mockTextField3.didBecomeFirstResponder)
+    }
+    
+    func test_textFieldDelegate_beginEditing() {
+        
+        // given
+        self.sut.textFieldDelegate = self.mockTextFieldDelegate
+        
+        // when
+        self.sut.textFieldDidBeginEditing(self.mockTextField1)
+        
+        // then
+        XCTAssertTrue(self.mockTextFieldDelegate.didTextFieldDidBeginEditing)
+        XCTAssertTrue(self.mockTextFieldDelegate.capturedTextField === self.mockTextField1)
+    }
+
+    func test_textFieldDelegate_endEditing() {
+        
+        // given
+        self.sut.textFieldDelegate = self.mockTextFieldDelegate
+        
+        // when
+        self.sut.textFieldDidEndEditing(self.mockTextField1)
+        
+        // then
+        XCTAssertTrue(self.mockTextFieldDelegate.didTextFieldDidEndEditing)
+        XCTAssertTrue(self.mockTextFieldDelegate.capturedTextField === self.mockTextField1)
+    }
+        
+}
+
+class MockTextFieldDelegate: NSObject, UITextFieldDelegate {
+    internal var didTextFieldDidBeginEditing: Bool = false
+    internal var didTextFieldDidEndEditing: Bool = false
+    internal var capturedTextField: UITextField! = nil
+    
+    internal func textFieldDidBeginEditing(textField: UITextField) {
+        self.didTextFieldDidBeginEditing = true
+        self.capturedTextField = textField
+    }
+    
+    internal func textFieldDidEndEditing(textField: UITextField) {
+        self.didTextFieldDidEndEditing = true
+        self.capturedTextField = textField
     }
 }
 
