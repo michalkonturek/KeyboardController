@@ -121,9 +121,36 @@ class KeyboardControllerTests: XCTestCase {
         // then
         XCTAssertFalse(self.mockTextField1.didBecomeFirstResponder)
         XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
-        XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
+        XCTAssertFalse(self.mockTextField3.didBecomeFirstResponder)
     }
     
+    func test_moveToNextField() {
+        
+        // given
+        self.mockTextField1.editing = true
+        
+        // when
+        self.sut.moveToNextField()
+        
+        // then
+        XCTAssertFalse(self.mockTextField1.didBecomeFirstResponder)
+        XCTAssertTrue(self.mockTextField2.didBecomeFirstResponder)
+        XCTAssertFalse(self.mockTextField3.didBecomeFirstResponder)
+    }
+    
+    func test_moveToNextField_doesNot() {
+        
+        // given
+        self.mockTextField3.editing = true
+        
+        // when
+        self.sut.moveToNextField()
+        
+        // then
+        XCTAssertFalse(self.mockTextField1.didBecomeFirstResponder)
+        XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
+        XCTAssertFalse(self.mockTextField3.didBecomeFirstResponder)
+    }
 }
 
 class MockTextField: UITextField {
