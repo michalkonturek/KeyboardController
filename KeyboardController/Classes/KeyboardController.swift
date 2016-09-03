@@ -154,7 +154,31 @@ public class KeyboardController: NSObject {
 }
 
 // MARK: Keybaord Handling
-extension KeyboardController {
+protocol KeyboardHandling {
+    
+    /**
+     Closes keyboard.
+     
+     - author: Michal Konturek
+     */
+    func closeKeyboard()
+    
+    /**
+     Sets previous text field as first responder.
+     
+     - author: Michal Konturek
+     */
+    func moveToPreviousField()
+    
+    /**
+     Sets next text field as first responder.
+     
+     - author: Michal Konturek
+     */
+    func moveToNextField()
+}
+
+extension KeyboardController: KeyboardHandling {
     
     /**
      Closes keyboard.
