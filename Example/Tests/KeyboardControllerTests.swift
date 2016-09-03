@@ -86,7 +86,6 @@ class KeyboardControllerTests: XCTestCase {
         self.mockTextField1.editing = false
         self.mockTextField2.editing = true
         
-        
         // when
         self.sut.closeKeyboard()
         
@@ -95,11 +94,40 @@ class KeyboardControllerTests: XCTestCase {
         XCTAssertTrue(self.mockTextField2.didResignFirstResponder)
     }
     
+    func test_moveToPreviousField() {
+        
+        // given
+        self.mockTextField1.editing = false
+        self.mockTextField2.editing = true
+        
+        // when
+        self.sut.moveToPreviousField()
+        
+        // then
+        XCTAssertTrue(self.mockTextField1.didBecomeFirstResponder)
+        XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
+    }
+    
+    func test_moveToPreviousField_doesNot() {
+        
+        // given
+        self.mockTextField1.editing = true
+        self.mockTextField2.editing = false
+        
+        // when
+        self.sut.moveToPreviousField()
+        
+        // then
+        XCTAssertFalse(self.mockTextField1.didBecomeFirstResponder)
+        XCTAssertFalse(self.mockTextField2.didBecomeFirstResponder)
+    }
+    
 }
 
 class MockTextField: UITextField {
     internal var mockEditing: Bool = false
     internal var didResignFirstResponder: Bool = false
+    internal var didBecomeFirstResponder: Bool = false
     
     override internal var editing: Bool {
         get {
@@ -112,6 +140,11 @@ class MockTextField: UITextField {
     
     override func resignFirstResponder() -> Bool {
         self.didResignFirstResponder = true
+        return true
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        self.didBecomeFirstResponder = true
         return true
     }
 }
