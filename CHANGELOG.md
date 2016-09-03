@@ -1,6 +1,13 @@
 # Change Log
 
-## [3.0.0](https://github.com/michalkonturek/KeyboardController/tree/3.0.0) (2016-08-04)
+## [3.1.0](https://github.com/michalkonturek/KeyboardController/tree/3.1.0) (2016-09-04)
+[Full Changelog](https://github.com/michalkonturek/KeyboardController/compare/3.0.0...3.1.0)
+
+**Merged pull requests:**
+
+- Updates code documentation and unit tests [\#5](https://github.com/michalkonturek/KeyboardController/pull/5) ([michalkonturek](https://github.com/michalkonturek))
+
+## [3.0.0](https://github.com/michalkonturek/KeyboardController/tree/3.0.0) (2016-08-05)
 [Full Changelog](https://github.com/michalkonturek/KeyboardController/compare/2.0.3...3.0.0)
 
 **Merged pull requests:**
