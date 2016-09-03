@@ -128,6 +128,26 @@ public class KeyboardController: NSObject {
         self.subscribeToNotifications()
     }
     
+    func subscribeToNotifications() {
+        let center = self.notificationCenter
+        center.addObserver(self,
+                           selector: #selector(onKeyboardDidHide),
+                           name: UIKeyboardDidHideNotification,
+                           object: nil)
+        center.addObserver(self,
+                           selector: #selector(onKeyboardDidShow),
+                           name: UIKeyboardDidShowNotification,
+                           object: nil)
+        center.addObserver(self,
+                           selector: #selector(onKeyboardWillHide),
+                           name: UIKeyboardWillHideNotification,
+                           object: nil)
+        center.addObserver(self,
+                           selector: #selector(onKeyboardWillShow),
+                           name: UIKeyboardWillShowNotification,
+                           object: nil)
+    }
+    
     deinit {
         self.notificationCenter.removeObserver(self)
     }
@@ -233,25 +253,5 @@ extension KeyboardController: KeyboardNotificationHandling {
      */
     public func onKeyboardWillShow() {
         self.delegate?.onKeyboardWillShow()
-    }
-    
-    func subscribeToNotifications() {
-        let center = self.notificationCenter
-        center.addObserver(self,
-                           selector: #selector(onKeyboardDidHide),
-                           name: UIKeyboardDidHideNotification,
-                           object: nil)
-        center.addObserver(self,
-                           selector: #selector(onKeyboardDidShow),
-                           name: UIKeyboardDidShowNotification,
-                           object: nil)
-        center.addObserver(self,
-                           selector: #selector(onKeyboardWillHide),
-                           name: UIKeyboardWillHideNotification,
-                           object: nil)
-        center.addObserver(self,
-                           selector: #selector(onKeyboardWillShow),
-                           name: UIKeyboardWillShowNotification,
-                           object: nil)
     }
 }
