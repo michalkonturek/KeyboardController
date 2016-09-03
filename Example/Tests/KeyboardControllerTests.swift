@@ -210,6 +210,21 @@ class KeyboardControllerTests: XCTestCase {
     
     func test_keyboardNotificationHandling() {
         
+        // given
+        let delegate = MockKeyboardNotificationHandlingDelegate()
+        self.sut.delegate = delegate
+        
+        // when
+        self.fakeCenter.postNotificationName(UIKeyboardDidHideNotification, object: nil)
+        self.fakeCenter.postNotificationName(UIKeyboardDidShowNotification, object: nil)
+        self.fakeCenter.postNotificationName(UIKeyboardWillHideNotification, object: nil)
+        self.fakeCenter.postNotificationName(UIKeyboardWillShowNotification, object: nil)
+        
+        // then
+        XCTAssertTrue(delegate.didOnKeyboardDidHide)
+        XCTAssertTrue(delegate.didOnKeyboardDidShow)
+        XCTAssertTrue(delegate.didOnKeyboardWillHide)
+        XCTAssertTrue(delegate.didOnKeyboardWillShow)
     }
 }
 
