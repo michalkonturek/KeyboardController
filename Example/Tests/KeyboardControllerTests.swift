@@ -207,6 +207,33 @@ class KeyboardControllerTests: XCTestCase {
         XCTAssertFalse(result)
         XCTAssertTrue(self.mockTextField2.didBecomeFirstResponder)
     }
+    
+    func test_keyboardNotificationHandling() {
+        
+    }
+}
+
+class MockKeyboardNotificationHandlingDelegate: KeyboardNotificationHandling {
+    internal var didOnKeyboardDidHide: Bool = false
+    internal var didOnKeyboardDidShow: Bool = false
+    internal var didOnKeyboardWillHide: Bool = false
+    internal var didOnKeyboardWillShow: Bool = false
+    
+    internal func onKeyboardDidHide() {
+        self.didOnKeyboardDidHide = true
+    }
+    
+    internal func onKeyboardDidShow() {
+        self.didOnKeyboardDidShow = true
+    }
+    
+    internal func onKeyboardWillHide() {
+        self.didOnKeyboardWillHide = true
+    }
+    
+    internal func onKeyboardWillShow() {
+        self.didOnKeyboardWillShow = true
+    }
 }
 
 class MockTextFieldDelegate: NSObject, UITextFieldDelegate {
