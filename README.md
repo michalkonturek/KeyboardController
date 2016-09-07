@@ -1,9 +1,9 @@
 # KeyboardController
 
-[![Version](https://img.shields.io/cocoapods/v/MKUnits.svg)](http://cocoapods.org/pods/KeyboardController)
-[![Build Status](https://travis-ci.org/michalkonturek/MKUnits.svg?branch=master)](https://travis-ci.org/michalkonturek/KeyboardController)
+[![Version](https://img.shields.io/cocoapods/v/KeyboardController.svg)](http://cocoapods.org/pods/KeyboardController)
+[![Build Status](https://travis-ci.org/michalkonturek/KeyboardController.svg?branch=master)](https://travis-ci.org/michalkonturek/KeyboardController)
 [![Swift](https://img.shields.io/badge/%20compatible-swift%202.2-orange.svg)](http://swift.org)
-[![License](https://img.shields.io/cocoapods/l/MKUnits.svg)](http://cocoapods.org/pods/KeyboardController)
+[![License](https://img.shields.io/cocoapods/l/KeyboardController.svg)](http://cocoapods.org/pods/KeyboardController)
 [![Twitter](https://img.shields.io/badge/contact-@MichalKonturek-blue.svg)](http://twitter.com/michalkonturek)
 
 Simplifies iOS keyboard handling.
