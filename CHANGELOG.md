@@ -1,6 +1,13 @@
 # Change Log
 
-## [3.1.0](https://github.com/michalkonturek/KeyboardController/tree/3.1.0) (2016-09-04)
+## [4.0.0](https://github.com/michalkonturek/KeyboardController/tree/4.0.0) (2016-11-07)
+[Full Changelog](https://github.com/michalkonturek/KeyboardController/compare/3.1.0...4.0.0)
+
+**Merged pull requests:**
+
+- Transition to Swift 3.0 [\#7](https://github.com/michalkonturek/KeyboardController/pull/7) ([michalkonturek](https://github.com/michalkonturek))
+
+## [3.1.0](https://github.com/michalkonturek/KeyboardController/tree/3.1.0) (2016-09-03)
 [Full Changelog](https://github.com/michalkonturek/KeyboardController/compare/3.0.0...3.1.0)
 
 **Merged pull requests:**
