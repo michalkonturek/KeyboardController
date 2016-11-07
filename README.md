@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/cocoapods/v/KeyboardController.svg)](http://cocoapods.org/pods/KeyboardController)
 [![Build Status](https://travis-ci.org/michalkonturek/KeyboardController.svg?branch=master)](https://travis-ci.org/michalkonturek/KeyboardController)
-[![Swift](https://img.shields.io/badge/%20compatible-swift%202.2-orange.svg)](http://swift.org)
+[![Swift](https://img.shields.io/badge/%20compatible-swift%203.0-orange.svg)](http://swift.org)
 [![License](https://img.shields.io/cocoapods/l/KeyboardController.svg)](http://cocoapods.org/pods/KeyboardController)
 [![Twitter](https://img.shields.io/badge/contact-@MichalKonturek-blue.svg)](http://twitter.com/michalkonturek)
 
@@ -69,12 +69,12 @@ self.keyboardController.textFieldDelegate = self;
 This could be particulary useful if you would like to add individual behaviour to `UITextFields` objects.
 
 ```swift
-func textFieldDidBeginEditing(textField: UITextField) {
+func textFieldDidBeginEditing(_ textField: UITextField) {
     if (textField == self.field4) { self.moveViewBy(-10) }
     if (textField == self.field5) { self.moveViewBy(-200) }
 }
 
-func textFieldDidEndEditing(textField: UITextField) {
+func textFieldDidEndEditing(_ textField: UITextField) {
     if (textField == self.field4) { self.moveViewBy(10) }
     if (textField == self.field5) { self.moveViewBy(200) }
 }
