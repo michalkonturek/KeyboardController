@@ -81,32 +81,32 @@ public class KeyboardController: NSObject {
     public weak var textFieldDelegate: UITextFieldDelegate?
     
     let fields: Array<UITextField>
-    var notificationCenter: NSNotificationCenter
+    var notificationCenter: NotificationCenter
 
     /**
      Instantiates `KeyboardController` object.
      
-     - important: Initialises with default `NSNotificationCenter`.
+     - important: Initialises with default `NotificationCenter`.
      
      - parameter field: an `UITextField` object.
      
      - author: Michal Konturek
      */
     convenience public init(field: UITextField) {
-        self.init(fields: [field], notificationCenter: NSNotificationCenter.defaultCenter())
+        self.init(fields: [field], notificationCenter: NotificationCenter.default)
     }
 
     /**
      Instantiates `KeyboardController` object.
      
-     - important: Initialises with default `NSNotificationCenter`.
+     - important: Initialises with default `NotificationCenter`.
      
      - parameter fields: an array of `UITextField` objects.
      
      - author: Michal Konturek
      */
     convenience public init(fields: Array<UITextField>) {
-        self.init(fields: fields, notificationCenter: NSNotificationCenter.defaultCenter())
+        self.init(fields: fields, notificationCenter: NotificationCenter.default)
     }
 
     /**
@@ -116,7 +116,7 @@ public class KeyboardController: NSObject {
      
      - author: Michal Konturek
      */
-    public init(fields: Array<UITextField>, notificationCenter: NSNotificationCenter) {
+    public init(fields: Array<UITextField>, notificationCenter: NotificationCenter) {
         self.fields = fields
         self.notificationCenter = notificationCenter
         super.init()
@@ -132,19 +132,19 @@ public class KeyboardController: NSObject {
         let center = self.notificationCenter
         center.addObserver(self,
                            selector: #selector(onKeyboardDidHide),
-                           name: UIKeyboardDidHideNotification,
+                           name: Notification.Name.UIKeyboardDidHide,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardDidShow),
-                           name: UIKeyboardDidShowNotification,
+                           name: Notification.Name.UIKeyboardDidShow,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardWillHide),
-                           name: UIKeyboardWillHideNotification,
+                           name: Notification.Name.UIKeyboardWillHide,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardWillShow),
-                           name: UIKeyboardWillShowNotification,
+                           name: Notification.Name.UIKeyboardWillShow,
                            object: nil)
     }
     
@@ -189,7 +189,7 @@ extension KeyboardController: KeyboardHandling {
      */
     public func closeKeyboard() {
         for field in self.fields {
-            if field.editing {
+            if field.isEditing {
                 field.resignFirstResponder()
             }
         }
@@ -202,7 +202,7 @@ extension KeyboardController: KeyboardHandling {
      */
     public func moveToPreviousField() {
         for index in self.fields.indices {
-            if self.fields[index].editing && index != 0 {
+            if self.fields[index].isEditing && index != 0 {
                 self.fields[index - 1].becomeFirstResponder()
                 break
             }
@@ -216,7 +216,7 @@ extension KeyboardController: KeyboardHandling {
      */
     public func moveToNextField() {
         for index in self.fields.indices {
-            if self.fields[index].editing && index != (self.fields.count - 1) {
+            if self.fields[index].isEditing && index != (self.fields.count - 1) {
                 self.fields[index + 1].becomeFirstResponder()
                 break
             }
@@ -229,18 +229,18 @@ extension KeyboardController: KeyboardHandling {
 
 extension KeyboardController: UITextFieldDelegate {
 
-    public func textFieldDidBeginEditing(textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         self.textFieldDelegate?.textFieldDidBeginEditing?(textField)
     }
 
-    public func textFieldDidEndEditing(textField: UITextField) {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
         self.textFieldDelegate?.textFieldDidEndEditing?(textField)
     }
 
-    public func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField.returnKeyType == .Next { self.moveToNextField() }
-        if textField.returnKeyType == .Done { self.closeKeyboard() }
-        return textField.returnKeyType == .Done
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.returnKeyType == .next { self.moveToNextField() }
+        if textField.returnKeyType == .done { self.closeKeyboard() }
+        return textField.returnKeyType == .done
     }
 }
 

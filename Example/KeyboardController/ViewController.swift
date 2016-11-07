@@ -31,20 +31,20 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if (textField == self.field4) { self.moveViewBy(-10) }
         if (textField == self.field5) { self.moveViewBy(-200) }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if (textField == self.field4) { self.moveViewBy(10) }
         if (textField == self.field5) { self.moveViewBy(200) }
     }
     
-    func moveViewBy(dy: CGFloat) {
-        UIView.animateWithDuration(0.2) { 
-            self.view.frame = CGRectOffset(self.view.frame, 0, dy)
-        }
+    func moveViewBy(_ dy: CGFloat) {
+        UIView.animate(withDuration: 0.2, animations: { 
+            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: dy)
+        }) 
     }
 }
 

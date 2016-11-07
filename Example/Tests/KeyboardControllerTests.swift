@@ -59,25 +59,25 @@ class KeyboardControllerTests: XCTestCase {
         
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[0],
                                       observer: self.sut,
-                                      name: UIKeyboardDidHideNotification,
+                                      name: Notification.Name.UIKeyboardDidHide,
                                       object: nil)
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[1],
                                       observer: self.sut,
-                                      name: UIKeyboardDidShowNotification,
+                                      name: Notification.Name.UIKeyboardDidShow,
                                       object: nil)
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[2],
                                       observer: self.sut,
-                                      name: UIKeyboardWillHideNotification,
+                                      name: Notification.Name.UIKeyboardWillHide,
                                       object: nil)
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[3],
                                       observer: self.sut,
-                                      name: UIKeyboardWillShowNotification,
+                                      name: Notification.Name.UIKeyboardWillShow,
                                       object: nil)
     }
     
-    func assertRegisteredObserver(registered: TestRegisteredObserver,
+    func assertRegisteredObserver(_ registered: TestRegisteredObserver,
                                     observer: AnyObject,
-                                    name: String?,
+                                    name: Notification.Name,
                                     object: AnyObject?) {
         XCTAssertTrue(registered.observer === observer)
         XCTAssertTrue(registered.name == name)
@@ -87,7 +87,7 @@ class KeyboardControllerTests: XCTestCase {
     func test_closeKeyboard() {
         
         // given
-        self.mockTextField2.editing = true
+        self.mockTextField2.isEditing = true
         
         // when
         self.sut.closeKeyboard()
@@ -101,7 +101,7 @@ class KeyboardControllerTests: XCTestCase {
     func test_moveToPreviousField() {
         
         // given
-        self.mockTextField2.editing = true
+        self.mockTextField2.isEditing = true
         
         // when
         self.sut.moveToPreviousField()
@@ -115,7 +115,7 @@ class KeyboardControllerTests: XCTestCase {
     func test_moveToPreviousField_doesNot() {
         
         // given
-        self.mockTextField1.editing = true
+        self.mockTextField1.isEditing = true
         
         // when
         self.sut.moveToPreviousField()
@@ -129,7 +129,7 @@ class KeyboardControllerTests: XCTestCase {
     func test_moveToNextField() {
         
         // given
-        self.mockTextField1.editing = true
+        self.mockTextField1.isEditing = true
         
         // when
         self.sut.moveToNextField()
@@ -143,7 +143,7 @@ class KeyboardControllerTests: XCTestCase {
     func test_moveToNextField_doesNot() {
         
         // given
-        self.mockTextField3.editing = true
+        self.mockTextField3.isEditing = true
         
         // when
         self.sut.moveToNextField()
@@ -183,8 +183,8 @@ class KeyboardControllerTests: XCTestCase {
     func test_textFieldShouldReturn_returnsTrue() {
         
         // given
-        self.mockTextField1.editing = true
-        self.mockTextField1.returnKeyType = .Done
+        self.mockTextField1.isEditing = true
+        self.mockTextField1.returnKeyType = .done
         
         // when
         let result = self.sut.textFieldShouldReturn(self.mockTextField1)
@@ -197,8 +197,8 @@ class KeyboardControllerTests: XCTestCase {
     func test_textFieldShouldReturn_returnsFalse() {
         
         // given
-        self.mockTextField1.editing = true
-        self.mockTextField1.returnKeyType = .Next
+        self.mockTextField1.isEditing = true
+        self.mockTextField1.returnKeyType = .next
         
         // when
         let result = self.sut.textFieldShouldReturn(self.mockTextField1)
@@ -215,10 +215,10 @@ class KeyboardControllerTests: XCTestCase {
         self.sut.delegate = delegate
         
         // when
-        self.fakeCenter.postNotificationName(UIKeyboardDidHideNotification, object: nil)
-        self.fakeCenter.postNotificationName(UIKeyboardDidShowNotification, object: nil)
-        self.fakeCenter.postNotificationName(UIKeyboardWillHideNotification, object: nil)
-        self.fakeCenter.postNotificationName(UIKeyboardWillShowNotification, object: nil)
+        self.fakeCenter.post(name: Notification.Name.UIKeyboardDidHide, object: nil)
+        self.fakeCenter.post(name: Notification.Name.UIKeyboardDidShow, object: nil)
+        self.fakeCenter.post(name: Notification.Name.UIKeyboardWillHide, object: nil)
+        self.fakeCenter.post(name: Notification.Name.UIKeyboardWillShow, object: nil)
         
         // then
         XCTAssertTrue(delegate.didOnKeyboardDidHide)
@@ -256,12 +256,12 @@ class MockTextFieldDelegate: NSObject, UITextFieldDelegate {
     internal var didTextFieldDidEndEditing: Bool = false
     internal var capturedTextField: UITextField! = nil
     
-    internal func textFieldDidBeginEditing(textField: UITextField) {
+    internal func textFieldDidBeginEditing(_ textField: UITextField) {
         self.didTextFieldDidBeginEditing = true
         self.capturedTextField = textField
     }
     
-    internal func textFieldDidEndEditing(textField: UITextField) {
+    internal func textFieldDidEndEditing(_ textField: UITextField) {
         self.didTextFieldDidEndEditing = true
         self.capturedTextField = textField
     }
@@ -272,7 +272,7 @@ class MockTextField: UITextField {
     internal var didResignFirstResponder: Bool = false
     internal var didBecomeFirstResponder: Bool = false
     
-    override internal var editing: Bool {
+    override internal var isEditing: Bool {
         get {
             return mockEditing
         }
@@ -292,28 +292,28 @@ class MockTextField: UITextField {
     }
 }
 
-class FakeNotificationCenter: NSNotificationCenter {
+class FakeNotificationCenter: NotificationCenter {
     internal var registeredObservers: Array<TestRegisteredObserver> = []
     
     override init () {}
     
-    override func addObserver(observer: AnyObject,
+    override func addObserver(_ observer: Any,
                               selector aSelector: Selector,
-                                       name aName: String?,
-                                            object anObject: AnyObject?) {
+                                       name aName: Notification.Name?,
+                                            object anObject: Any?) {
         
         let item = TestRegisteredObserver()
-        item.observer = observer
+        item.observer = observer as AnyObject!
         item.selector = aSelector
-        item.name = aName
-        item.object = anObject
+        item.name = aName!
+        item.object = anObject as AnyObject?
         self.registeredObservers.append(item)
     }
     
-    override func postNotificationName(aName: String, object anObject: AnyObject?) {
+    override func post(name aName: Notification.Name, object anObject: Any?) {
         for item in self.registeredObservers {
             if item.name == aName {
-                item.observer.performSelector(item.selector)
+                _ = item.observer.perform(item.selector)
                 break
             }
         }
@@ -324,5 +324,5 @@ class TestRegisteredObserver {
     internal var observer: AnyObject!
     internal var object: AnyObject?
     internal var selector: Selector!
-    internal var name: String?
+    internal var name: Notification.Name!
 }
