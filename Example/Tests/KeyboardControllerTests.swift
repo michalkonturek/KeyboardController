@@ -77,7 +77,7 @@ class KeyboardControllerTests: XCTestCase {
     
     func assertRegisteredObserver(_ registered: TestRegisteredObserver,
                                     observer: AnyObject,
-                                    name: String?,
+                                    name: NSNotification.Name,
                                     object: AnyObject?) {
         XCTAssertTrue(registered.observer === observer)
         XCTAssertTrue(registered.name == name)
@@ -305,7 +305,7 @@ class FakeNotificationCenter: NotificationCenter {
         let item = TestRegisteredObserver()
         item.observer = observer as AnyObject!
         item.selector = aSelector
-        item.name = aName.map { $0.rawValue }
+        item.name = aName!
         item.object = anObject as AnyObject?
         self.registeredObservers.append(item)
     }
@@ -313,7 +313,7 @@ class FakeNotificationCenter: NotificationCenter {
     override func post(name aName: NSNotification.Name, object anObject: Any?) {
         for item in self.registeredObservers {
             if item.name == aName {
-                item.observer.perform(item.selector)
+                _ = item.observer.perform(item.selector)
                 break
             }
         }
@@ -324,5 +324,5 @@ class TestRegisteredObserver {
     internal var observer: AnyObject!
     internal var object: AnyObject?
     internal var selector: Selector!
-    internal var name: String?
+    internal var name: NSNotification.Name!
 }
