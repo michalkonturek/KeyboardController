@@ -59,25 +59,25 @@ class KeyboardControllerTests: XCTestCase {
         
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[0],
                                       observer: self.sut,
-                                      name: NSNotification.Name.UIKeyboardDidHide,
+                                      name: Notification.Name.UIKeyboardDidHide,
                                       object: nil)
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[1],
                                       observer: self.sut,
-                                      name: NSNotification.Name.UIKeyboardDidShow,
+                                      name: Notification.Name.UIKeyboardDidShow,
                                       object: nil)
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[2],
                                       observer: self.sut,
-                                      name: NSNotification.Name.UIKeyboardWillHide,
+                                      name: Notification.Name.UIKeyboardWillHide,
                                       object: nil)
         self.assertRegisteredObserver(self.fakeCenter.registeredObservers[3],
                                       observer: self.sut,
-                                      name: NSNotification.Name.UIKeyboardWillShow,
+                                      name: Notification.Name.UIKeyboardWillShow,
                                       object: nil)
     }
     
     func assertRegisteredObserver(_ registered: TestRegisteredObserver,
                                     observer: AnyObject,
-                                    name: NSNotification.Name,
+                                    name: Notification.Name,
                                     object: AnyObject?) {
         XCTAssertTrue(registered.observer === observer)
         XCTAssertTrue(registered.name == name)
@@ -215,10 +215,10 @@ class KeyboardControllerTests: XCTestCase {
         self.sut.delegate = delegate
         
         // when
-        self.fakeCenter.post(name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-        self.fakeCenter.post(name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        self.fakeCenter.post(name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        self.fakeCenter.post(name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        self.fakeCenter.post(name: Notification.Name.UIKeyboardDidHide, object: nil)
+        self.fakeCenter.post(name: Notification.Name.UIKeyboardDidShow, object: nil)
+        self.fakeCenter.post(name: Notification.Name.UIKeyboardWillHide, object: nil)
+        self.fakeCenter.post(name: Notification.Name.UIKeyboardWillShow, object: nil)
         
         // then
         XCTAssertTrue(delegate.didOnKeyboardDidHide)
@@ -299,7 +299,7 @@ class FakeNotificationCenter: NotificationCenter {
     
     override func addObserver(_ observer: Any,
                               selector aSelector: Selector,
-                                       name aName: NSNotification.Name?,
+                                       name aName: Notification.Name?,
                                             object anObject: Any?) {
         
         let item = TestRegisteredObserver()
@@ -310,7 +310,7 @@ class FakeNotificationCenter: NotificationCenter {
         self.registeredObservers.append(item)
     }
     
-    override func post(name aName: NSNotification.Name, object anObject: Any?) {
+    override func post(name aName: Notification.Name, object anObject: Any?) {
         for item in self.registeredObservers {
             if item.name == aName {
                 _ = item.observer.perform(item.selector)
@@ -324,5 +324,5 @@ class TestRegisteredObserver {
     internal var observer: AnyObject!
     internal var object: AnyObject?
     internal var selector: Selector!
-    internal var name: NSNotification.Name!
+    internal var name: Notification.Name!
 }

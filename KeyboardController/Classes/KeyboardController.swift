@@ -86,7 +86,7 @@ public class KeyboardController: NSObject {
     /**
      Instantiates `KeyboardController` object.
      
-     - important: Initialises with default `NSNotificationCenter`.
+     - important: Initialises with default `NotificationCenter`.
      
      - parameter field: an `UITextField` object.
      
@@ -99,7 +99,7 @@ public class KeyboardController: NSObject {
     /**
      Instantiates `KeyboardController` object.
      
-     - important: Initialises with default `NSNotificationCenter`.
+     - important: Initialises with default `NotificationCenter`.
      
      - parameter fields: an array of `UITextField` objects.
      
@@ -132,19 +132,19 @@ public class KeyboardController: NSObject {
         let center = self.notificationCenter
         center.addObserver(self,
                            selector: #selector(onKeyboardDidHide),
-                           name: NSNotification.Name.UIKeyboardDidHide,
+                           name: Notification.Name.UIKeyboardDidHide,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardDidShow),
-                           name: NSNotification.Name.UIKeyboardDidShow,
+                           name: Notification.Name.UIKeyboardDidShow,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardWillHide),
-                           name: NSNotification.Name.UIKeyboardWillHide,
+                           name: Notification.Name.UIKeyboardWillHide,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardWillShow),
-                           name: NSNotification.Name.UIKeyboardWillShow,
+                           name: Notification.Name.UIKeyboardWillShow,
                            object: nil)
     }
     
