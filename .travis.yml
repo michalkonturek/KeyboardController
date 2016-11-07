@@ -1,6 +1,6 @@
 language: objective-c
 osx_image: xcode8
-cache: cocoapods
+# cache: cocoapods
 podfile: Example/Podfile
 before_install:
 - gem install cocoapods -v 1.1.1
