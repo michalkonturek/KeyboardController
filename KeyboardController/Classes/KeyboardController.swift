@@ -254,7 +254,7 @@ extension KeyboardController: KeyboardNotificationHandling {
      
      - author: Michal Konturek
      */
-    public func onKeyboardDidHide() {
+    @objc public func onKeyboardDidHide() {
         self.delegate?.onKeyboardDidHide()
     }
     
@@ -263,7 +263,7 @@ extension KeyboardController: KeyboardNotificationHandling {
      
      - author: Michal Konturek
      */
-    public func onKeyboardDidShow() {
+    @objc public func onKeyboardDidShow() {
         self.delegate?.onKeyboardDidShow()
     }
     
@@ -272,7 +272,7 @@ extension KeyboardController: KeyboardNotificationHandling {
      
      - author: Michal Konturek
      */
-    public func onKeyboardWillHide() {
+    @objc public func onKeyboardWillHide() {
         self.delegate?.onKeyboardWillHide()
     }
     
@@ -281,7 +281,7 @@ extension KeyboardController: KeyboardNotificationHandling {
      
      - author: Michal Konturek
      */
-    public func onKeyboardWillShow() {
+    @objc public func onKeyboardWillShow() {
         self.delegate?.onKeyboardWillShow()
     }
 }
