@@ -66,7 +66,7 @@ There is also an option of setting a `textFieldDelegate` property of all textFie
 self.keyboardController.textFieldDelegate = self;
 ```
 
-This could be particulary useful if you would like to add individual behaviour to `UITextFields` objects.
+This could be particularly useful if you would like to add individual behaviour to `UITextFields` objects.
 
 ```swift
 func textFieldDidBeginEditing(_ textField: UITextField) {
