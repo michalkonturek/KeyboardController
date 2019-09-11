@@ -132,19 +132,19 @@ public class KeyboardController: NSObject {
         let center = self.notificationCenter
         center.addObserver(self,
                            selector: #selector(onKeyboardDidHide),
-                           name: Notification.Name.UIKeyboardDidHide,
+                           name: UIResponder.keyboardDidHideNotification,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardDidShow),
-                           name: Notification.Name.UIKeyboardDidShow,
+                           name: UIResponder.keyboardDidShowNotification,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardWillHide),
-                           name: Notification.Name.UIKeyboardWillHide,
+                           name: UIResponder.keyboardWillHideNotification,
                            object: nil)
         center.addObserver(self,
                            selector: #selector(onKeyboardWillShow),
-                           name: Notification.Name.UIKeyboardWillShow,
+                           name: UIResponder.keyboardWillShowNotification,
                            object: nil)
     }
     
@@ -254,7 +254,7 @@ extension KeyboardController: KeyboardNotificationHandling {
      
      - author: Michal Konturek
      */
-    public func onKeyboardDidHide() {
+    @objc public func onKeyboardDidHide() {
         self.delegate?.onKeyboardDidHide()
     }
     
@@ -263,7 +263,7 @@ extension KeyboardController: KeyboardNotificationHandling {
      
      - author: Michal Konturek
      */
-    public func onKeyboardDidShow() {
+    @objc public func onKeyboardDidShow() {
         self.delegate?.onKeyboardDidShow()
     }
     
@@ -272,7 +272,7 @@ extension KeyboardController: KeyboardNotificationHandling {
      
      - author: Michal Konturek
      */
-    public func onKeyboardWillHide() {
+    @objc public func onKeyboardWillHide() {
         self.delegate?.onKeyboardWillHide()
     }
     
@@ -281,7 +281,7 @@ extension KeyboardController: KeyboardNotificationHandling {
      
      - author: Michal Konturek
      */
-    public func onKeyboardWillShow() {
+    @objc public func onKeyboardWillShow() {
         self.delegate?.onKeyboardWillShow()
     }
 }
